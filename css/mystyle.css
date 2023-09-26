@@ -1,0 +1,279 @@
+body{
+	background-color: #FFFFFF;
+	margin: 2% 4% 2% 4%;
+}
+h1{
+	color: rgb(255,255,255);
+	display:inline-block;
+	font-family: "Century Gothic", Arial, Times, sans-serif;
+}
+h2{
+	color: rgb(255,255,255);
+	text-align: center;
+	font-family: "Century Gothic", Arial, Times, serif;
+}
+h3{
+	background-color: #720675;
+	font-family: "Century Gothic", Arial, Times;
+	font-size: 150%;
+	text-transform: uppercase;
+	text-align: center;
+	clear: left;
+  	border: 0px;
+	padding: 4px 0px 4px 0px;
+  	margin: 0px;
+}
+
+h4{
+	font-family: Arial, Times, serif;
+	width: 50%;
+	margin: 0px;
+}
+
+h5{
+	font-family: Arial, Times, serif;
+	margin: 0px;
+	padding: 0px;
+}
+
+p{
+	padding-top: 1px;
+	margin-top: 0px;
+	margin-bottom: 2px;
+}
+
+.index_par{
+	text-align: center;	
+	font-family: Arial, Times, serif;
+	margin-bottom: 0px;
+	padding-bottom: 4px;
+}
+
+date{
+	display: inline-block;
+	padding: 0px;
+	margin: 0px;
+}
+header{
+	background-color: #1F1F1F;
+	display: block;
+	text-align: center;
+}
+
+footer{
+	background-color: #1F1F1F;
+	display: block;
+	height: 80px;
+	text-align: center;
+}
+
+.inl{
+	display: inline-block;
+	padding: 1px 0px 1px 0px;
+	margin: 0px;
+}
+
+small{
+	color: #666666;
+}
+
+main{
+	background-color: rgba(88, 63, 141, .7);
+	margin-bottom: 0px;
+}
+
+.sect{
+	font-family: Arial, Times, serif;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	margin-left:6%;
+}
+
+#hobbies{
+	font-family: Arial, Times, serif;
+	margin-top: 8px;
+	margin-bottom: 0px;
+	margin-left:6%;
+}
+
+#hobbies_list{
+	padding-bottom: 8px;
+	margin-bottom: 0px;
+
+}
+
+/* --------------------------------*/
+
+/* navigation bar */
+
+nav{
+	background-color: #1F1000;
+}
+
+ul.nav_list{
+	list-style-type: none;
+	color: #FFFFFF;
+	font-family: "Century Gothic", Arial, Times, serif;
+	margin: 0px;
+	padding: 0px;
+	overflow: hidden;
+}
+
+a.nv:link{
+	margin: 0px;
+	display: inline-block;
+	padding: 10px;
+	border: 0px;
+	color: #FFFFFF;
+	background-color: #1F1000;
+}
+a.nv:visited{
+	margin: 0px;
+	display: inline-block;
+	padding: 10px;
+	border: 0px;
+	color: #e300e9;
+	background-color: #6c6a6a;
+}
+a.nv:hover{
+	display: block;
+	color: #6aea6a;
+	margin: 0px;
+	padding: 9.5px;
+	border: 0.5px solid whitesmoke;
+}
+a.nv:active{
+	display: block;
+	color: #006400;
+	background-color: #FF4500;
+	margin: 0px;
+	padding: 9.5px;
+	border: 0.5px solid whitesmoke;
+}
+
+a.nv{
+	text-transform: uppercase;
+	text-decoration: none;
+}
+
+a{
+	text-decoration: none;	
+}
+
+/* -------------------------------------*/
+
+.table_list{
+	text-decoration: none;
+	align-content: top;
+	margin-top:0px;
+	margin-left:0px;
+	padding-left: 18px;
+	padding-top: 0px;
+}
+
+.textlink{
+	color: rgb(255,255,255);
+	background-color: rgb(0,12,200);
+	font-family: Arial, Times, serif;
+	display: block;
+	text-align: center;	
+}
+
+#lang{
+	display: block;
+	width: 50%;
+}
+
+#prog_lang{
+	display: block;
+	width: 50%;
+}
+
+#tech_skills{
+	display: block;
+	width: 50%;
+}
+
+/*-----------------------------------------*/
+
+/* experience */
+
+#exp{
+	width: 44%;
+}
+
+/*-----------------------------------------*/
+
+/* about page */
+
+#about{
+	text-align: justify;
+	display:inline-block;
+	width: 500px;
+	height: 600px;
+  	border: 0px;
+  	padding: 0px;
+  	margin-left: 350px;
+}
+
+#selfie{
+	display: inline-block;
+	margin-top: 20px;
+	margin-left: 100px;
+	margin-right: auto;
+}
+
+/*-----------------------------------------*/
+
+/* projects page */
+
+#edu, #conf{
+margin-top: 8px;
+}
+
+table{
+	font-family: Arial, Times, serif;
+	display: inline-block;
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+#edu_body1{
+	text-align: left;
+}
+
+.descr{
+	font-family: Courier, Arial, Times;	
+	text-align: justify;
+}
+
+.proj{
+	font-family: Courier, Arial, Times;
+	width:350px;	
+}
+
+td, th{
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+th{
+	background: rgba(0, 0, 0, 1.0);
+	color: rgb(117,117,117);
+	text-transform: uppercase;
+}
+td{
+	background-color: rgba(88, 63, 141, .1);
+}
+
+.sem{
+	width: 175px;
+}
+.sem4{
+	text-align: center;
+}
+
+/*-----------------------------------------*/
+
+
+
+
