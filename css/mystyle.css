@@ -1,6 +1,7 @@
 body{
 	background-color: #FFFFFF;
 	margin: 2% 4% 2% 4%;
+	height: 100%;
 }
 
 h1{
@@ -67,8 +68,10 @@ header{
 footer{
 	background-color: #1F1F1F;
 	display: block;
+	width: 92%;
 	height: 80px;
 	text-align: center;
+	position: fixed;
 }
 
 .inl{
@@ -83,6 +86,8 @@ small{
 
 main{
 	background-color: rgba(88, 63, 141, .7);
+	display: block;
+	height: 100%;
 	margin-bottom: 0px;
 }
 
@@ -167,7 +172,7 @@ a{
 /* -------------------------------------*/
 
 tr:nth-child(even){
-	background-color: #F2F2F2;
+	background-color: grey;
 }
 
 .table_list{
@@ -214,29 +219,40 @@ tr:nth-child(even){
 
 /* about page */
 
+.grid-container{
+	display: grid;
+  	grid-template-areas:
+  	'left_banner ... ... picture ... ... right_banner'
+  	'left_banner ... description description description ... right_banner'
+  	'left_banner ... description description description ... right_banner';
+  	grid-template-columns: 200px auto 200px 300px 200px auto 200px;
+  	padding: 5px;
+  	height: 100%;
+}
+
+
 #about{
 	text-align: justify;
-	display:inline-block;
-	float: right;
-	width: 40%;
-	height: 600px;
-  	border: 0px;
-  	padding: 0px;
-  	margin-left: auto;
-  	margin-right: auto;
 }
 
-.buffer{
-	display:inline-block;
-	float:left;
-	width: 70%;
+.grid-item{
+	text-align: center;
 }
 
-#selfie{
-	display: inline-block;
-	margin-top: 20px;
-  	margin-left: auto;
-  	margin-right: auto;
+.item1{
+	grid-area: left_banner;
+}
+
+.item2{
+	grid-area: picture;
+}
+
+.item3{
+	grid-area: description;
+}
+
+.item4{
+	grid-area: right_banner;
 }
 
 /*-----------------------------------------*/
