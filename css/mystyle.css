@@ -217,12 +217,18 @@ tr:nth-child(even){
 #about{
 	text-align: justify;
 	display:inline-block;
-	width: 500px;
+	width: 40%;
 	height: 600px;
   	border: 0px;
   	padding: 0px;
   	margin-left: auto;
   	margin-right: auto;
+}
+
+.buffer{
+	display:inline-block;
+	float:left;
+	width: 30%;
 }
 
 #selfie{
