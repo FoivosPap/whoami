@@ -3,7 +3,7 @@
   <head>
   	<meta charset = "utf-8">
   	<title>My CV</title>
-	<link rel="stylesheet" href="https://foivospap.github.io/whoami/css/mystyle.css">
+	<link rel="stylesheet" href="css/mystyle.css">
   	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   </head>
   <body id="top">
@@ -20,16 +20,21 @@
 		  	</nav>
 	</header>
 	<main>
-		<div class="buffer">
-			<section id="about">
-				<img id="selfie" src="https://foivospap.github.io/whoami/assets/images/about/professional.jpg" width="300px" alt="self picture">
+		<div class="grid-container">
+			<div class="item1" id="l_banner" class="grid-item"></div>
+			<div class="item2" id="selfie" class="grid-item">
+						<img src="https://foivospap.github.io/whoami/assets/images/about/professional.jpg" width="300px" alt="self picture">
+			</div>
+
+			<div class="item3" id="about" class="grid-item">
 				<p>I am an Electrical and Computer Engineer specialized in robotics, automation and control systems. My recent experience includes technical documentation and electrical design in the aerospace and maritime sectors. I am passionate about new technologies that will lead to a sustainable future. In my free time I do sports, go to the cinema or listen to music. My next career goal is to work on challenging projects regarding industrial automation, robotics or software development.</p>
-			</section>
+			</div>
+			<div class="item4" id="r_banner" class="grid-item"></div>
 		</div>
   	</main>
   	<footer>
       <nav>
-					<ul class="nav_list">
+				<ul class="nav_list">
 		  			<li style="float: left;"><a href="index.html" class="nv">Home</a></li>
 				  	<li style="float: left;"><a href="projects.html" class="nv">Projects</a></li>
 				  	<li style="float: left;"><a href="#top" class="nv">Back to top</a></li>
