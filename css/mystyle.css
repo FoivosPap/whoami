@@ -221,14 +221,15 @@ tr:nth-child(even){
 	height: 600px;
   	border: 0px;
   	padding: 0px;
-  	margin-left: 0px AUTO;
+  	margin-left: auto;
+  	margin-right: auto;
 }
 
 #selfie{
 	display: inline-block;
 	margin-top: 20px;
-	margin-left: 100px;
-	margin-right: auto;
+  	margin-left: auto;
+  	margin-right: auto;
 }
 
 /*-----------------------------------------*/
