@@ -1,7 +1,14 @@
+
+html{
+		height: auto;
+		min-height: 1000px;
+} 
+
 body{
 	background-color: #FFFFFF;
-	margin: 2% 4% 2% 4%;
+	margin: 0;
 	height: 100%;
+
 }
 
 h1{
@@ -17,15 +24,17 @@ h2{
 }
 
 h3{
+	border-radius: 15px;
 	background-color: #720675;
 	font-family: "Century Gothic", Arial, Times;
 	font-size: 150%;
 	text-transform: uppercase;
 	text-align: center;
 	clear: left;
-  	border: 0px;
+  border: 0px;
 	padding: 4px 0px 4px 0px;
-  	margin: 0px;
+  margin: 0px 4px 0px 4px;
+
 }
 
 h4{
@@ -62,22 +71,22 @@ date{
 header{
 	background-color: #1F1F1F;
 	display: block;
+  position: relative;
 	text-align: center;
-	width: 100%;
+	width: 98%;
 	top: 0px;
-	margin-bottom: 55px;
+	left: 1%;
 }
 
 footer{
 	background-color: #1F1F1F;
+  position: fixed;
 	display: block;
-	width: 92%;
+	width: 98%;
 	height: 80px;
 	text-align: center;
-	position: fixed;
-	bottom: 0px;
-	right: 4%;
-	z-index: 1;
+	bottom: 0;
+	left: 1%;
 }
 
 .inl{
@@ -91,34 +100,84 @@ small{
 }
 
 main{
-	display: block;
-	margin: 0px;
 	position: relative;
-	bottom: 55px;
-	z-index: 0;
-	width: 100%;
-
+	overflow: auto;
+	width: 98%;
+	bottom: 0;
+	margin: 0;
+	margin-bottom: 80px;
+	left: 1%;
+	height: 100%;
+	min-height: 1000px;
+	background-color: rgba(88, 63, 141, .7);
 }
 
-.sect{
+.grid-container-main{
+		display: grid;
+  	grid-template-areas:
+  	'banner_left content banner_right';
+ 		grid-template-columns: auto auto auto;
+  	padding: 5px 0px 5px 0px;
+}
+
+.main-item-1, .about-item-1, .projects-item-1{
+	grid-area:	banner_left;
+  background-color: dimgrey;
+  margin: 0px 0.5% 0px 0.5%;
+  width: 200px;
+  justify-self: right;
+}
+
+.main-item-2{
+	grid-area:	content;
+	max-width: 1500px;
+  justify-self: center;
+}
+
+.main-item-3, .about-item-3, .projects-item-3{
+	grid-area:	banner_right;
+  background-color: dimgrey;
+  margin: 0px 0.5% 0px 0.5%;
+  width: 200px;
+  justify-self: left;
+}
+
+@media screen and (max-width:1250px) {
+ 	.main-item-2{
+    width: 100%;
+		padding-left: 0px;
+		padding-right: 0px;
+  }
+	.main-item-1, .main-item-3{
+    display: none;
+  } 
+}
+
+.table-main{
+	display: block;
+}
+
+.sect, #about{
 	font-family: Arial, Times, serif;
 	margin-top: 8px;
 	margin-bottom: 8px;
 	margin-left: 4px;
 	margin-right: 4px;
+	border-radius: 25px;
+	background-color: #6c6a6a;
+	padding: 10px;
+	overflow: inherit;
 }
 
 #hobbies{
 	font-family: Arial, Times, serif;
-	margin-top: 8px;
 	margin-bottom: 0px;
-	margin-left:6%;
+	margin-left: 5px;
 }
 
 #hobbies_list{
 	padding-bottom: 8px;
 	margin-bottom: 0px;
-
 }
 
 /* --------------------------------*/
@@ -154,7 +213,7 @@ a.nv:visited{
 	color: #e300e9;
 	background-color: #6c6a6a;
 }
-a.nv:hover{
+a.nv:hover, a.nv:focus{
 	display: block;
 	color: #6aea6a;
 	margin: 0px;
@@ -212,6 +271,11 @@ tr:nth-child(even){
 
 #tech_skills{
 	display: block;
+	width: 100%;
+}
+
+ul.classic_list{
+	list-style-image: url('https://foivospap.github.io/whoami/assets/images/home/bullet-small.png');
 }
 
 /*-----------------------------------------*/
@@ -222,51 +286,105 @@ tr:nth-child(even){
 
 /*-----------------------------------------*/
 
-/* about page */
+/* about page 
 
-.grid-container{
-	display: grid;
+.grid-container-about{
+		display: grid;
   	grid-template-areas:
-  	'... ... picture ... ...'
-  	'... description description description ...'
-  	'... description description description ...';
-  	grid-template-columns: 3% auto 300px auto 3%;
+  	'banner_left ... picture ...  banner_right'
+  	'banner_left description description description banner_right'
+  	'banner_left ... ... ... banner_right';
+  	grid-template-columns: auto 100px 300px 100px auto;
+  	grid-template-rows: 350px 200px auto;
   	padding: 5px;
-  	padding-top: 100px;
+  	padding-top: 8px;
+  	grid-row-gap: 0px;
+}
+*/
+
+.grid-container-about{
+		display: grid;
+  	grid-template-areas:
+  	'banner_left about banner_right'
+  	'banner_left ... banner_right';
+  	grid-template-columns: auto auto auto;
+  	padding: 5px;
+  	padding-top: 8px;
 }
 
+.about-item-2{
+		grid-area: about;
+		text-align: justify;
+  	max-width: 600px;
+  	display: grid;
+	  justify-self: center;  	
+}
+
+#selfie{
+	  	justify-self: center;
+	  	margin-top: 80px;
+	  	height: 330px;
+}
 
 #about{
-	text-align: justify;
+			vertical-align: top;
 }
 
-.grid-item{
-	text-align: center;
+@media screen and (max-width:600px) {
+ 	.about-item-2{
+    width: 100%;
+		padding-left: 0px;
+		padding-right: 0px;
+  }
+	.about-item-1, .about-item-3{
+    display: none;
+  } 
 }
 
-.item1{
-	grid-area: picture;
-}
 
-.item2{
-	grid-area: description;
-  	padding-top: 20px;
-}
+
 
 /*-----------------------------------------*/
 
 /* projects page */
 
-#edu, #conf{
-margin-top: 8px;
+.grid-container-projects{
+		display: grid;
+  	grid-template-areas:
+  	'banner_left projects banner_right'
+  	'banner_left ... banner_right';
+  	grid-template-columns: auto auto auto;
+  	padding: 5px;
+  	padding-top: 8px;
+}
+
+.projects-item-2{
+		grid-area: projects;
+		text-align: justify;
+  	max-width: 1100px;
+  	display: grid;
+	  justify-self: center;  	
+}
+
+@media screen and (max-width:1100px) {
+ 	.projects-item-2{
+    width: 100%;
+		padding-left: 0px;
+		padding-right: 0px;
+  }
+	.projects-item-1, .projects-item-3{
+    display: none;
+  } 
 }
 
 table{
 	font-family: Arial, Times, serif;
-	display: inline-block;
 	border: 1px solid black;
 	border-collapse: collapse;
 	overflow-x:scroll;
+	width: 100%;
+	margin: 0px;
+	margin-bottom: 5px;
 }
 
 #edu_body1{
@@ -284,6 +402,10 @@ table{
 	padding-right: 4px;
 }
 
+.proj1{
+	width: 25%;
+}
+
 td, th{
 	border: 1px solid black;
 	border-collapse: collapse;
@@ -299,7 +421,7 @@ td{
 }
 
 .sem{
-	width: 100%;
+	width: 20%;
 	padding-left: 4px;
 	padding-right: 4px;
 }
@@ -309,46 +431,62 @@ td{
 
 /*-----------------------------------------*/
 
-/* Create three columns that floats next to each other */
-.column1 {
-  	float: left;
-  	width: 13.5%;
-	min-height: 1000px;
-  	padding: 0.5%;
-  	background-color: dimgrey;
-}
+/*-----------------------------------------
 
-.column2 {
-  	float: left;
-  	width: 70%;
-	min-height: 1000px;
+/* Create three columns that floats next to each other
+.column1 {
+		float: left;
+  	width: 13.5%;
   	padding: 0.5%;
-	background-color: rgba(88, 63, 141, .7);
+ 		margin-left: 4%;
+  	background-color: dimgrey;
+  	height: 100%;
+		margin: 0px;
 }
 
 .column1_ind {
-  	float: left;
+	display: inline-block;
+		float: left;
   	width: 13.5%;
-	min-height: 2000px;
   	padding: 0.5%;
   	background-color: dimgrey;
+  	height: 100%;
+		margin: 0px;
 }
 
-/* Clear floats after the columns */
+.column2 {
+	  float: left;
+  	width: 70%;
+  	padding: 0.5%;
+	  background-color: rgba(88, 63, 141, .7);
+	  left:14.5%;
+	  margin-top: 0px;
+		min-height: 1000px;
+		max-width: 1000px;
+}
+
+/* Clear floats after the columns 
 .row::after {
   content: "";
   display: table;
   clear: both;
 }
 
-/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other 
 @media screen and (max-width:700px) {
  	.column2 {
     width: 100%;
-	padding-left: 0px;
-	padding-right: 0px;
+		padding-left: 0px;
+		padding-right: 0px;
   }
 	.column1, .column1_ind{
     display: none;
   } 
+}
+
+----------------------*/
+
+
+* {
+  box-sizing: border-box;
 }
