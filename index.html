@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang = "en">
 	<head>
-	  	<meta charset = "utf-8" >
+	  	<meta charset = "utf-8" name="viewport" content="width=device-width, initial-scale=1">
 	  	<title>My CV</title>
 			<link rel="stylesheet" href="css/mystyle.css">
 	  	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
@@ -18,18 +18,17 @@
 			  		<li style="float: right;"><a href="about.html" class="nv">About</a></li>
 		  		</ul>
 		  	</nav>
-			</header>
-			<main>
-			<div class="table-main">
-				<div class="column1_ind"><p>sthng</p></div>
-				<div class="column2">
+		</header>
+		<main class="grid-container-main">
+				<div class="main-item-1" class="column1_ind"></div>
+				<div class="main-item-2" class="column2">
 					<h3>Experience</h3>
 					<section class="sect" id="exp">
 						<dl id="exp_page" class="inl">
 							<dt>Apr 2022 - Apr 2023</dt>
 							<dd><strong>Golden Automation Systems</strong> (Piraeus, Greece)<br>
 								Electrical Design Engineer
-								<ul>
+								<ul class="classic_list">
 									<li>Design automation systems for maritime applications (vessels, yachts)</li>
 									<li>Create electrical drawings (Eplan, AutoCAD)</li>
 									<li>Integrate the different systems of the vessel (power distribution, communication, lighting, navigation)</li>
@@ -38,7 +37,7 @@
 							<dt>Aug 2021 - Mar 2022</dt>
 							<dd><strong>Erma First ESK Engineering Solutions A.E.</strong> (Piraeus, Greece)<br>
 								Documentation Engineer
-								<ul>
+								<ul class="classic_list">
 									<li>Update of Operation, Maintenance and Safety Manuals</li>
 									<li>Product lifecycle management using Solidworks PDM</li>
 									<li>Keep internal instructions documents updated</li>
@@ -47,7 +46,7 @@
 							<dt>Jan 2019 - Apr 2020</dt>
 							<dd><strong>Liebherr-Aerospace Lindenberg GmbH</strong> (Lindenberg, Germany)<br>
 								Technical Author
-								<ul>
+								<ul class="classic_list">
 									<li>Creation/Update of Component Maintenance Manuals</li>
 									<li>Creation of mock-ups for technical illustrators</li>
 									<li>Resolve complaints raised by the repair shop</li>
@@ -56,15 +55,19 @@
 							<dt>Jul 2018 - Jan 2019</dt>
 							<dd><strong>ALTHOM  GmbH</strong> (Patras, Greece)<br>
 								Technical Author
-								<ul>
+								<ul class="classic_list">
 									<li>Creation/Update of Component Maintenance Manuals</li>
 									<li>Creation of mock-ups for technical illustrators</li>
 								</ul>
 							</dd>
 							<dt>Dec 2017 - May 2018</dt>
 							<dd><strong>Black Diamond</strong> (Patras, Greece)<br>
-								Intern<br>
-								Development of the automation solution for an automatic sheet cutter
+								Intern
+								<ul  class="classic_list">
+									<li>
+										Development of the automation solution for an automatic sheet cutter				
+									</li>
+								</ul>
 							</dd>
 							<dt>Jan 2017 - Sep 2017</dt>
 							<dd><strong>Greek army</strong> (Obligatory Military Service)
@@ -95,119 +98,119 @@
 				  	</section>
 			  		<h3>Skills</h3>
 			  		<section class="sect" id="skills">
-			  		<div id="lang">
+				  		<div id="lang">
+						  	<table>
+							  	<colgroup>
+							  		<col style="width: 33.3%;">
+							  		<col style="width: 33.3%;">
+							  		<col style="width: 33.3%;">
+							  	</colgroup>
+						  		<thead>
+						  			<th>Language</th>
+						  			<th>Level</th>
+						  			<th>Certificate</th>
+						  		</thead>
+						  		<tbody>
+						  			<tr>
+						  				<td>Greek</td>
+						  				<td>Mother Language</td>
+						  				<td>-</td>
+						  			</tr>
+						  			<tr>
+						  				<td>English</td>
+						  				<td>Fluent</td>
+						  				<td>IELTS (8.0/9.0 - C2)</td>
+						  			</tr>
+						  			<tr>
+						  				<td>German</td>
+						  				<td>Intermediate</td>
+						  				<td>Goethe-Zertifikat (B2)</td>
+						  			</tr>
+						  			<tr>
+						  				<td>Spanish</td>
+						  				<td>Beginner</td>
+						  				<td>-</td>
+						  			</tr>
+						  		</tbody>
+						  	</table>
+				  	</div>
+				  	<div id="prog_lang">
 					  	<table>
 						  	<colgroup>
-						  		<col style="width: 333px;">
-						  		<col style="width: 333px;">
-						  		<col style="width: 333px;">
+						  		<col style="width: 100%;">
 						  	</colgroup>
-					  		<thead>
-					  			<th>Language</th>
-					  			<th>Level</th>
-					  			<th>Certificate</th>
-					  		</thead>
-					  		<tbody>
-					  			<tr>
-					  				<td>Greek</td>
-					  				<td>Mother Language</td>
-					  				<td>-</td>
-					  			</tr>
-					  			<tr>
-					  				<td>English</td>
-					  				<td>Fluent</td>
-					  				<td>IELTS (8.0/9.0 - C2)</td>
-					  			</tr>
-					  			<tr>
-					  				<td>German</td>
-					  				<td>Intermediate</td>
-					  				<td>Goethe-Zertifikat (B2)</td>
-					  			</tr>
-					  			<tr>
-					  				<td>Spanish</td>
-					  				<td>Beginner</td>
-					  				<td>-</td>
-					  			</tr>
-					  		</tbody>
-					  	</table>
-			  	</div>
-			  	<div id="prog_lang">
-				  	<table>
-					  	<colgroup>
-					  		<col style="width: 1000px;">
-					  	</colgroup>
-					  		<thead>
-					  			<tr>
-					  				<th>Programming Languages</th>
-					  			</tr>
-					  		</thead>
-					  		<tbody>
-					  			<tr>
-					  				<td>
-					  					<ul>
-					  						<li>C, C++</li>
-					  						<li>Python</li>
-					  						<li>HTML</li>
-					  						<li>CSS</li>
-					  						<li>JavaScript</li>
-					  						<li>Java</li>
-					  						<li>PLC programming in STEP-7 (LAD, Statement List)</li>
-					  						<li>Microprocessor programming</li>
-					  					</ul>
-					  				</td>
-					  			</tr>
-					  		</tbody>
-					  </table>
-				</div>
-				<div id="tech_skills">
-					  <table>
-					  	<colgroup>
-					  		<col style="width: 1000px;">
-					  	</colgroup>
-					  	<thead>
-					  		<th>Technical Skills</th>
-					  	</thead>
-					  	<tbody>
-					  		<tr>
-					  			<td>
-					  				<ul>
-					  					<li>Matlab</li>
-					  					<li>LabVIEW</li>
-					  					<li>Linux OS</li>
-					  					<li>Enovia SmarTeam PDM</li>
-					  					<li>Solidworks PDM</li>
-					  					<li>PTC Arbortext (Xml editor)</li>
-					  					<li>Inmedius ATAauthor Pro</li>
-					  					<li>HiCo ILS Suite</li>
-					  					<li>Technical Documentation (ATA iSPEC 2200, ASD STE 100)</li>
-						  				<li>TIA Portal</li>
-						  				<li>Fuzzy Control (Siemens)</li>
-						  				<li>Automation Studio</li>
-						  				<li>Eplan Electric P8, Pro Panel</li>
-						  				<li>AutoCAD</li>
-						  				<li>Communication protocols (CANBus, Modbus TCP)</li>
-						  				<li>DALI (Lighting)</li>
-						  				<li>Microsoft Dynamics, Office, Sharepoint, Planner, Teams</li>
-						  				<li>Scrum</li>
-					  				</ul>
-					  			</td>
-					  		</tr>
-					  	</tbody>
-					  </table>
-				</div>
+						  		<thead>
+						  			<tr>
+						  				<th>Programming Languages</th>
+						  			</tr>
+						  		</thead>
+						  		<tbody>
+						  			<tr>
+						  				<td>
+						  					<ul class="classic_list">
+						  						<li>C, C++</li>
+						  						<li>Python</li>
+						  						<li>HTML</li>
+						  						<li>CSS</li>
+						  						<li>JavaScript</li>
+						  						<li>Java</li>
+						  						<li>PLC programming in STEP-7 (LAD, Statement List)</li>
+						  						<li>Microprocessor programming</li>
+						  					</ul>
+						  				</td>
+						  			</tr>
+						  		</tbody>
+						  </table>
+					</div>
+					<div id="tech_skills">
+						  <table>
+						  	<colgroup>
+						  		<col style="min-width: 100%;">
+						  	</colgroup>
+						  	<thead style="min-width: 100%;">
+						  		<th>Technical Skills</th>
+						  	</thead>
+						  	<tbody style="min-width: 100%;">
+						  		<tr>
+						  			<td>
+						  				<ul class="classic_list">
+						  					<li>Matlab</li>
+						  					<li>LabVIEW</li>
+						  					<li>Linux OS</li>
+						  					<li>Enovia SmarTeam PDM</li>
+						  					<li>Solidworks PDM</li>
+						  					<li>PTC Arbortext (Xml editor)</li>
+						  					<li>Inmedius ATAauthor Pro</li>
+						  					<li>HiCo ILS Suite</li>
+						  					<li>Technical Documentation (ATA iSPEC 2200, ASD STE 100)</li>
+							  				<li>TIA Portal</li>
+							  				<li>Fuzzy Control (Siemens)</li>
+							  				<li>Automation Studio</li>
+							  				<li>Eplan Electric P8, Pro Panel</li>
+							  				<li>AutoCAD</li>
+							  				<li>Communication protocols (CANBus, Modbus TCP)</li>
+							  				<li>DALI (Lighting)</li>
+							  				<li>Microsoft Dynamics, Office, Sharepoint, Planner, Teams</li>
+							  				<li>Scrum</li>
+						  				</ul>
+						  			</td>
+						  		</tr>
+						  	</tbody>
+						  </table>
+					</div>
 				</section> 
 				<h3>Hobbies</h3>
-				<section id="hobbies">
-							<ul id="hobbies_list">
-								<li>Sports (tennis, football, basketball)</li>
-								<li>Travelling</li>
-								<li>Cinema</li>
-								<li>Music</li>
-								<li>Photography</li>
+				<section class="sect" id="hobbies">
+							<ul id="hobbies_list" class="classic_list">
+									<li>Sports (tennis, football, basketball)</li>
+									<li>Travelling</li>
+									<li>Cinema</li>
+									<li>Music</li>
+									<li>Photography</li>
 							</ul>
 				</section>	
 			</div>
-			<div class="column1_ind"><p>sthng</p></div>
+			<div class="main-item-3" class="column1_ind"></div>
 		</main>
 	  	<footer>
 	      	<nav>
@@ -220,5 +223,5 @@
 		  	</nav>
 	  		<small>&copy; 2023 Foivos Design</small>
 	    </footer>
-		</body>
+	</body>
 </html>
