@@ -316,7 +316,6 @@ ul.classic_list{
 		grid-area: about;
 		text-align: justify;
   	max-width: 600px;
-  	display: grid;
 	  justify-self: center;  	
 }
 
@@ -364,7 +363,6 @@ ul.classic_list{
   	max-width: 1100px;
   	display: grid;
 	  justify-self: center;  
-	font-size: 100%;
 }
 
 @media screen and (max-width:1100px) {
