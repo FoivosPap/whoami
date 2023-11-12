@@ -1,14 +1,12 @@
 
 html{
-		height: auto;
-		min-height: 1000px;
+	height: auto;
 } 
 
 body{
 	background-color: #FFFFFF;
 	margin: 0;
 	height: 100%;
-
 }
 
 h1{
@@ -24,27 +22,27 @@ h2{
 }
 
 h3{
-	border-radius: 15px;
-	background-color: #720675;
 	font-family: "Century Gothic", Arial, Times;
 	font-size: 150%;
 	text-transform: uppercase;
 	text-align: center;
 	clear: left;
-  border: 0px;
+  border-bottom: 1px solid black;
 	padding: 4px 0px 4px 0px;
   margin: 0px 4px 0px 4px;
 
 }
 
 h4{
-	font-family: Arial, Times, serif;
-	width: 50%;
-	margin: 0px;
+	font-family: "Century Gothic", Arial, Times, serif;
+	text-align: center;
+	text-transform: uppercase;
+	width: 100%;
+	margin: 4px 4px 8px 4px;
 }
 
 h5{
-	font-family: Arial, Times, serif;
+	font-family: "Century Gothic", Arial, Times, serif;
 	margin: 0px;
 	padding: 0px;
 }
@@ -69,7 +67,7 @@ date{
 }
 
 header{
-	background-color: #1F1F1F;
+	background-color: #1F1000;
 	display: block;
   position: relative;
 	text-align: center;
@@ -79,12 +77,11 @@ header{
 }
 
 footer{
-	background-color: #1F1F1F;
-  position: fixed;
+	background-color: #1F1000;
+  position: relative;
 	display: block;
 	width: 98%;
-	height: 80px;
-	text-align: center;
+	text-align: left;
 	bottom: 0;
 	left: 1%;
 }
@@ -95,32 +92,57 @@ footer{
 	margin: 0px;
 }
 
-small{
-	color: #666666;
+#signature{
+	display: block;
+	font-family: "Century Gothic", Arial, Times, serif;
+	text-align: center;
+	color: #fd9d02;
+	padding: 4px;
+	height: 40px;
+}
+
+#contact_box{
+	display: block;
+	width: 250px;
+}
+#contact{
+	font-family: "Century Gothic", Arial, Times, serif;
+	color: #FFFFFF;
+	list-style-type: none;
+	padding-left: 8px;
+	height: 70px;
+}
+
+.contact_item{
+		float: left;
+}
+
+#contact_icons{
+	padding: 3px;
+	margin: 0;
 }
 
 main{
 	position: relative;
-	overflow: auto;
+	background-color: #a3a3a3;
 	width: 98%;
 	bottom: 0;
 	margin: 0;
-	margin-bottom: 80px;
 	left: 1%;
 	height: 100%;
-	min-height: 1000px;
-	background-color: rgba(88, 63, 141, .7);
+
 }
 
 .grid-container-main{
-		display: grid;
-  	grid-template-areas:
-  	'banner_left content banner_right';
- 		grid-template-columns: auto auto auto;
-  	padding: 5px 0px 5px 0px;
+	display: grid;
+  grid-template-areas:
+	'banner_left content banner_right';
+	grid-template-columns: auto auto auto;
+  padding: 5px 0px 5px 0px;
 }
 
 .main-item-1, .about-item-1, .projects-item-1{
+	display: none;
 	grid-area:	banner_left;
   background-color: dimgrey;
   margin: 0px 0.5% 0px 0.5%;
@@ -128,18 +150,32 @@ main{
   justify-self: right;
 }
 
-.main-item-2{
+.main-item-2, .projects-item-2{
 	grid-area:	content;
-	max-width: 1500px;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 1000px;
   justify-self: center;
 }
 
 .main-item-3, .about-item-3, .projects-item-3{
+	display: none;
 	grid-area:	banner_right;
-  background-color: dimgrey;
-  margin: 0px 0.5% 0px 0.5%;
-  width: 200px;
-  justify-self: left;
+  	background-color: dimgrey;
+  	margin: 0px 0.5% 0px 0.5%;
+  	width: 200px;
+  	justify-self: left;
+}
+
+.skills_table{
+	display: float;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 500px;
+}
+
+#tech_skills, #prog{
+	text-align: center;
 }
 
 @media screen and (max-width:1250px) {
@@ -147,15 +183,19 @@ main{
     width: 100%;
 		padding-left: 0px;
 		padding-right: 0px;
-  }
+  	}
 	.main-item-1, .main-item-3{
     display: none;
-  } 
+  	}
+  .cont_hide{
+  	display: none;
+  }	
 }
 
 .table-main{
 	display: block;
 }
+
 
 .sect, #about{
 	font-family: Arial, Times, serif;
@@ -164,20 +204,14 @@ main{
 	margin-left: 4px;
 	margin-right: 4px;
 	border-radius: 25px;
-	background-color: #6c6a6a;
 	padding: 10px;
 	overflow: inherit;
-}
-
-#hobbies{
-	font-family: Arial, Times, serif;
-	margin-bottom: 0px;
-	margin-left: 5px;
 }
 
 #hobbies_list{
 	padding-bottom: 8px;
 	margin-bottom: 0px;
+	text-align: center;
 }
 
 /* --------------------------------*/
@@ -202,36 +236,29 @@ a.nv:link{
 	display: inline-block;
 	padding: 10px;
 	border: 0px;
-	color: #FFFFFF;
+	color: #fd9d02;
 	background-color: #1F1000;
 }
 a.nv:visited{
 	margin: 0px;
 	display: inline-block;
-	padding: 10px;
 	border: 0px;
-	color: #e300e9;
-	background-color: #6c6a6a;
+	color: #fd9d02;
+	background-color: #1F1000;
 }
 a.nv:hover, a.nv:focus{
 	display: block;
-	color: #6aea6a;
+	color: #a3a3a3;
 	margin: 0px;
-	padding: 9.5px;
-	border: 0.5px solid whitesmoke;
 }
 a.nv:active{
 	display: block;
-	color: #006400;
-	background-color: #FF4500;
+	color: #FFFFFF;
 	margin: 0px;
-	padding: 9.5px;
-	border: 0.5px solid whitesmoke;
 }
 
 a.nv{
 	text-transform: uppercase;
-	text-decoration: none;
 }
 
 a{
@@ -241,7 +268,7 @@ a{
 /* -------------------------------------*/
 
 tr:nth-child(even){
-	background-color: grey;
+	background-color: rgba(253, 157, 2, 0.4);
 }
 
 .table_list{
@@ -261,49 +288,13 @@ tr:nth-child(even){
 	text-align: center;	
 }
 
-#lang{
-	display: block;
-}
-
-#prog_lang{
-	display: block;
-}
-
-#tech_skills{
-	display: block;
-	width: 100%;
-}
-
-ul.classic_list{
-	list-style-image: url('https://foivospap.github.io/whoami/assets/images/home/bullet-small.png');
-}
 
 /*-----------------------------------------*/
 
-/* experience */
-
-
-
-/*-----------------------------------------*/
-
-/* about page 
+/* about page */
 
 .grid-container-about{
-		display: grid;
-  	grid-template-areas:
-  	'banner_left ... picture ...  banner_right'
-  	'banner_left description description description banner_right'
-  	'banner_left ... ... ... banner_right';
-  	grid-template-columns: auto 100px 300px 100px auto;
-  	grid-template-rows: 350px 200px auto;
-  	padding: 5px;
-  	padding-top: 8px;
-  	grid-row-gap: 0px;
-}
-*/
-
-.grid-container-about{
-		display: grid;
+	display: grid;
   	grid-template-areas:
   	'banner_left about banner_right'
   	'banner_left ... banner_right';
@@ -315,8 +306,8 @@ ul.classic_list{
 .about-item-2{
 		grid-area: about;
 		text-align: justify;
-  	max-width: 600px;
-	  justify-self: center;  	
+  		max-width: 600px;
+	  	justify-self: center;  	
 }
 
 #selfie{
@@ -328,21 +319,23 @@ ul.classic_list{
 }
 
 #about{
-			vertical-align: top;
+		vertical-align: top;
 }
 
 @media screen and (max-width:600px) {
  	.about-item-2{
-    width: 100%;
+    	width: 100%;
 		padding-left: 0px;
 		padding-right: 0px;
   }
 	.about-item-1, .about-item-3{
     display: none;
-  } 
+  }
 }
 
-
+.orange{
+	color: #fd9d02;
+}
 
 
 /*-----------------------------------------*/
@@ -350,10 +343,9 @@ ul.classic_list{
 /* projects page */
 
 .grid-container-projects{
-		display: grid;
+	display: grid;
   	grid-template-areas:
-  	'banner_left projects banner_right'
-  	'banner_left ... banner_right';
+  	'banner_left projects banner_right';
   	grid-template-columns: auto auto auto;
   	padding: 5px;
   	padding-top: 8px;
@@ -361,9 +353,8 @@ ul.classic_list{
 
 .projects-item-2{
 		grid-area: projects;
-		text-align: justify;
-  	max-width: 1100px;
-	  justify-self: center;  	
+  		max-width: 1100px;
+	  	justify-self: center;  	
 }
 
 @media screen and (max-width:1100px) {
@@ -379,16 +370,32 @@ ul.classic_list{
 
 table{
 	font-family: Arial, Times, serif;
-	border: 1px solid black;
 	border-collapse: collapse;
-	overflow-x:scroll;
 	width: 100%;
 	margin: 0px;
-	margin-bottom: 5px;
+	margin-bottom: 10px;
 }
 
-#edu_body1{
-	text-align: left;
+.bord_bot{
+	border-bottom: 1px solid #000000;
+}
+
+#lang{
+	display: flex;
+	max-width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+.div13{
+	width: 33.3%;
+}
+
+ul.classic_list{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
 }
 
 .descr{
@@ -402,26 +409,18 @@ table{
 	padding-right: 4px;
 }
 
-.proj1{
-	width: 25%;
-}
-
 td, th{
-	border: 1px solid black;
+	border-bottom: 1px solid #000000;
 	border-collapse: collapse;
 }
 
 th{
-	background: rgba(0, 0, 0, 1.0);
-	color: rgb(117,117,117);
+	font-family: "Century Gothic", Arial, Times, serif;
 	text-transform: uppercase;
-}
-td{
-	background-color: rgba(88, 63, 141, .1);
+	text-align: center;
 }
 
 .sem{
-	width: 20%;
 	padding-left: 4px;
 	padding-right: 4px;
 }
@@ -430,62 +429,6 @@ td{
 }
 
 /*-----------------------------------------*/
-
-/*-----------------------------------------
-
-/* Create three columns that floats next to each other
-.column1 {
-		float: left;
-  	width: 13.5%;
-  	padding: 0.5%;
- 		margin-left: 4%;
-  	background-color: dimgrey;
-  	height: 100%;
-		margin: 0px;
-}
-
-.column1_ind {
-	display: inline-block;
-		float: left;
-  	width: 13.5%;
-  	padding: 0.5%;
-  	background-color: dimgrey;
-  	height: 100%;
-		margin: 0px;
-}
-
-.column2 {
-	  float: left;
-  	width: 70%;
-  	padding: 0.5%;
-	  background-color: rgba(88, 63, 141, .7);
-	  left:14.5%;
-	  margin-top: 0px;
-		min-height: 1000px;
-		max-width: 1000px;
-}
-
-/* Clear floats after the columns 
-.row::after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* Responsive layout - makes the three columns stack on top of each other instead of next to each other 
-@media screen and (max-width:700px) {
- 	.column2 {
-    width: 100%;
-		padding-left: 0px;
-		padding-right: 0px;
-  }
-	.column1, .column1_ind{
-    display: none;
-  } 
-}
-
-----------------------*/
-
 
 * {
   box-sizing: border-box;
