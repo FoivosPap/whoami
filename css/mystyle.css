@@ -245,12 +245,12 @@ a.nv{
 	padding: 10px;
 }
 
-#nav_icon1, #nav_icon2, #nav_icon4, #nav_icon5{
+#nav_icon1, #nav_icon2, #nav_icon4, #nav_icon5, .contact_item{
 	float: left;
 }
 
- #nav_icon3, #nav_icon6, .contact_item{
-	 float: left;
+ #nav_icon3, #nav_icon6{
+	 float: right;
  }
 
 a{
