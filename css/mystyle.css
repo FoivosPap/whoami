@@ -117,9 +117,14 @@ footer{
 		float: left;
 }
 
-#contact_icons{
+#contact_icon1, #contact_icon2{
 	padding: 3px;
 	margin: 0;
+}
+
+#git_icon{
+	padding: 3px;
+	margin: 0;	
 }
 
 main{
