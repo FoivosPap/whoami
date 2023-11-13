@@ -101,31 +101,7 @@ footer{
 	height: 40px;
 }
 
-#contact_box{
-	display: block;
-	width: 250px;
-}
-#contact{
-	font-family: "Century Gothic", Arial, Times, serif;
-	color: #FFFFFF;
-	list-style-type: none;
-	padding-left: 8px;
-	height: 70px;
-}
 
-.contact_item{
-		float: left;
-}
-
-#contact_icon1, #contact_icon2{
-	padding: 3px;
-	margin: 0;
-}
-
-#git_icon{
-	padding: 0px;
-	margin-left: 2px;	
-}
 
 main{
 	position: relative;
@@ -241,14 +217,13 @@ a.nv:link{
 	display: inline-block;
 	border: 0px;
 	color: #fd9d02;
-	background-color: #1F1000;
+
 }
 a.nv:visited{
 	margin: 0px;
 	display: inline-block;
 	border: 0px;
 	color: #fd9d02;
-	background-color: #1F1000;
 }
 a.nv:hover, a.nv:focus{
 	display: block;
@@ -265,12 +240,41 @@ a.nv{
 	text-transform: uppercase;
 }
 
-nav_icons{
+.nav_icons{
+	background-color: #1F1000;
 	padding: 10px;
 }
 
 a{
 	text-decoration: none;	
+}
+
+#contact_box{
+	display: block;
+	width: 250px;
+}
+#contact{
+	font-family: "Century Gothic", Arial, Times, serif;
+	color: #FFFFFF;
+	list-style-type: none;
+	padding-left: 8px;
+	height: 70px;
+}
+
+.contact_item{
+		float: left;
+}
+.contact_icons{	
+	padding: 3px;
+	margin: 0;
+	background-color: #1F1000;
+}
+
+#git_icon{
+	background-color: #1F1000;	
+	padding: 0px;
+	margin-left: 2px;	
+	background-color: #a3a3a3;
 }
 
 /* -------------------------------------*/
