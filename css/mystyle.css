@@ -123,8 +123,8 @@ footer{
 }
 
 #git_icon{
-	padding: 3px;
-	margin: 0;	
+	padding: 0px;
+	margin-left: 2px;	
 }
 
 main{
@@ -239,7 +239,6 @@ ul.nav_list{
 a.nv:link{
 	margin: 0px;
 	display: inline-block;
-	padding: 10px;
 	border: 0px;
 	color: #fd9d02;
 	background-color: #1F1000;
@@ -264,6 +263,10 @@ a.nv:active{
 
 a.nv{
 	text-transform: uppercase;
+}
+
+nav_icons{
+	padding: 10px;
 }
 
 a{
