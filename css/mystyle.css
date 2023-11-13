@@ -245,7 +245,7 @@ a.nv{
 	padding: 10px;
 }
 
-#nav_icon1, #nav_icon2, #nav_icon4, #nav_icon5, .contact_item{
+#nav_icon1, #nav_icon2, #nav_icon4, #nav_icon5, .contact_item, #git_icon{
 	float: left;
 }
 
@@ -276,10 +276,10 @@ a{
 }
 
 #git_icon{
-	background-color: #1F1000;	
+	background-color: #a3a3a3;	
 	padding: 0px;
 	margin-left: 2px;	
-	background-color: #a3a3a3;
+	color: #1F1000;
 }
 
 /* -------------------------------------*/
