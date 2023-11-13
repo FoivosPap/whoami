@@ -240,10 +240,18 @@ a.nv{
 	text-transform: uppercase;
 }
 
-.nav_icons{
+#nav_icon1, #nav_icon2, #nav_icon3, #nav_icon4, #nav_icon5, #nav_icon6{
 	background-color: #1F1000;
 	padding: 10px;
 }
+
+#nav_icon1, #nav_icon2, #nav_icon4, #nav_icon5{
+	float: left;
+}
+
+ #nav_icon3, #nav_icon6, .contact_item{
+	 float: left;
+ }
 
 a{
 	text-decoration: none;	
@@ -261,10 +269,7 @@ a{
 	height: 70px;
 }
 
-.contact_item{
-		float: left;
-}
-.contact_icons{	
+#contact_icon1, #contact_icon2{	
 	padding: 3px;
 	margin: 0;
 	background-color: #1F1000;
