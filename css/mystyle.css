@@ -245,7 +245,7 @@ a.nv{
 	padding: 10px;
 }
 
-#nav_icon1, #nav_icon2, #nav_icon4, #nav_icon5, .contact_item, #git_icon{
+#nav_icon1, #nav_icon2, #nav_icon4, #nav_icon5, .contact_item, #git_icon, #more_pr{
 	float: left;
 }
 
