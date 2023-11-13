@@ -282,6 +282,30 @@ a{
 	color: #1F1000;
 }
 
+a.git:link{
+	margin: 0px;
+	display: inline-block;
+	border: 0px;
+	color: #1F1000;
+
+}
+a.git:visited{
+	margin: 0px;
+	display: inline-block;
+	border: 0px;
+	color: #1F1000;
+}
+a.git:hover, a.nv:focus{
+	display: block;
+	color: #fd9d02;
+	margin: 0px;
+}
+a.git:active{
+	display: block;
+	color: #FFFFFF;
+	margin: 0px;
+}
+
 /* -------------------------------------*/
 
 tr:nth-child(even){
