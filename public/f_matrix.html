@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	<meta charset = "utf-8" name="viewport" content="width=device-width, initial-scale=1">
+	<title>F Matrix</title>
+	<link rel="stylesheet" href="../css/mystyle.css">
+	<link href="../css/prism.css" rel="stylesheet" />
+	<script src="https://kit.fontawesome.com/10e7774256.js" crossorigin="anonymous"></script>
+</head>
+<body>
+	  	<header>
+	  		<nav>
+	  			<ul class="nav_list">
+			  		<li class="left"><a class="nv" href="./projects.html">Projects</a></li>
+			  		<li class="left"><a class="nv" href="./swarm.html">Swarm</a></li>
+			  		<li class="left"><a class="nv" href="./f_matrix.html">F Matrix</a></li>
+			  		<li class="right"><a class="nv" href="./about.html">About</a></li>
+		  		</ul>
+		  	</nav>
+		</header>
+		<div class="bg">
+			<h1>PROJECTS</h1>
+			<h2>Fundamental Matrix Calculation</h2>
+		</div>
+		<main class="grid-container-projects">
+            <div class="projects-item-1"></div>
+            <div class="projects-item-2" class="sect">
+            	<h3>Swarm aggregation of robotic vehicles</h3>
+            	<ol class="swarm_list">
+            		<li><p>A group of 8 moving robotic vehicles which are in random positions in a space (cube) 100Χ100Χ100 meters.</p>
+            		<ol>
+            			<li>
+							<p><strong>
+								Using the attractive/repulsive function (2.2) from V. Gazi [<a href="#gazi">1</a>]  with a = 1, b = 20, and c = 0.2, show the trajectories in 3D space of the moving vehicles.
+							</strong></p>
+							<div  class="marg_top">
+								<p>
+									First, we draw the cube of dimensions 100x100x100 and place inside it the 8 robotic vehicles in random positions chosen using the pseudorandom number generator, rand. 
+									So, we have the following code:
+								</p>
+							</div>
+            				<details>
+			            		<summary>
+			            			Code:
+			            		</summary>
+				            	<pre>
+				            		<code class="language-MATLAB">
+
+				            		</code>
+				            	</pre>            		
+	            			</details>
+	            			<p>
+	            				This initial state is shown below:	            				
+	            			</p>
+							<figure>
+								<img src="../assets/images/swarm/cube.png" width="300" alt="Cube">
+							</figure>
+	            			<p>
+	            				We then calculate the trajectories of the 8 robotic vehicles by applying the attractive/repulsive function g(y) from V. Gazi [<a href="#gazi">1</a>]:
+	            			</p>
+	            			<p id="eq_1" class="eq">g(y)=-y[&#119886;-b*exp(-&#124;&#124;y&#124;&#124;<sup>2</sup>/c)] (1),</p>
+	            			<p>
+	            				for a = 1, b = 20, and c = 0.2.
+	            			</p>
+	            			<p>
+	            				The function g(y) takes as input for each robotic vehicle the positions of the rest and gives us the derivative of the displacement, i.e. its velocity. This way we can find the position of the next moment in time (t+dt):
+	            			</p>
+	            			<p class="eq">
+	            				x(t+dt)=x(t)v*dt,
+	            			</p>
+	            			<p>
+	            				where v is the velocity and dt=0.01.
+	            			</p>
+							<p>
+								So, we impement the above:
+							</p>
+            				<details>
+			            		<summary>
+			            			Code:
+			            		</summary>
+				            	<pre>
+				            		<code class="language-MATLAB">
+max=10; 
+for h=0:0.01:max     
+    for k=1:8
+        for l=1:8
+            if k~=l
+
+% Calculation of function g
+               gx=-(Xrobots(k)-Xrobots(l))*(a-b*exp((-(Xrobots(k)-Xrobots(l))^2)/c));
+               gy=-(Yrobots(k)-Yrobots(l))*(a-b*exp((-(Yrobots(k)-Yrobots(l))^2)/c));
+               gz=-(Zrobots(k)-Zrobots(l))*(a-b*exp((-(Zrobots(k)-Zrobots(l))^2)/c));
+               xd(k)=xd(k)+gx;
+               yd(k)=yd(k)+gy;
+               zd(k)=zd(k)+gz;
+            end
+        end
+
+% Calculation of trajectories (step 0.01sec)
+        Xrobots(k)=Xrobots(k)+0.01*xd(k);
+        Yrobots(k)=Yrobots(k)+0.01*yd(k);
+        Zrobots(k)=Zrobots(k)+0.01*zd(k);
+    end
+    plot3(Xrobots,Yrobots,Zrobots,'m*')
+    hold on
+    xd=zeros(1,8);
+    yd=zeros(1,8);
+    zd=zeros(1,8);
+end
+hold off
+
+				            		</code>
+				            	</pre>            		
+	            			</details>
+							<p>Running the above code, we get the trajectories of the robots for a period of 10 sec with step dt=0.01:</p>
+							<figure>
+								<img src="../assets/images/swarm/swarm_e1a_1.png" width="300" alt="Swarm trajectories of Exercise 1a (Image 1)">
+								<img src="../assets/images/swarm/swarm_e1a_2.png" width="304" alt="Swarm trajectories of Exercise 1a (Image 2)">
+							</figure>
+							<p>
+								We observe that the robots move closer to each other and stop once the distance between them is reduced enough.
+							</p>
+            			</li>
+						<li>
+							<p><strong>
+								Verify through motion simulation the convergence to finite time on the sphere B<sub>ϵ</sub>(x̄) according to Theorem 1 [<a href="#gazi">1</a>].
+							</strong></p>
+							<div  class="marg_top">
+								<p>
+									According to Gazi's Theorem 1 if we have a swarm of robots which satisfy <a href="#eq_1">Eq. 1</a> will converge within the sphere B<sub>ε</sub>(x̄):
+								</p>
+							</div>		
+								<p class="eq">B<sub>ϵ</sub>(x̄){x:&#124;&#124;x-x̄&#124;&#124;≤ϵ}, where ϵ=(b/&#119886;*sqrt(c/2)*exp(-1/2)) and x̄ is the center of the swarm.</p>
+								<p>In fact, this will happen in a time that will not exceed the time limit:</p>
+								<p class="eq">ṯ=max<sub>i∈S</sub>{(-1/(2*&#119886;))*ln(ϵ<sup>2</sup>/(2*V<sub>i</sub>(0)))},</p>
+								<p>where V<sub>i</sub> is the Lyapunov function that corresponds to robot i for t=0. Thus, we have the following code:</p>
+								<details>
+									<summary>
+										Code:
+									</summary>
+									<pre>
+										<code class="language-MATLAB">
+% Calculation of the center of the swarm
+Xcenter=sum(Xrobots)/8;   
+Ycenter=sum(Yrobots)/8;   
+Zcenter=sum(Zrobots)/8; 
+	
+ex=Xrobots-Xcenter;
+ey=Yrobots-Ycenter;
+ez=Zrobots-Zcenter;
+	
+Vx=0.5*power(ex,2);	
+Vy=0.5*power(ey,2);
+Vz=0.5*power(ez,2);
+	
+% Calculation of the time limit (Theorem 1)
+max=0;
+for i=1:8
+	temp=-(1/(2*a))*log(er^2/(2*Vx(i)));
+	if temp>max
+		max=temp;
+	end
+	temp=-(1/(2*a))*log(er^2/(2*Vy(i)));
+	if temp>max
+		max=temp;
+	end
+	temp=-(1/(2*a))*log(er^2/(2*Vz(i)));
+	if temp>max
+		max=temp;
+	end
+end
+
+for h=0:0.01:max     
+	for k=1:8
+		for l=1:8
+			if k~=l
+
+
+
+% Calculation of function g
+				gx=-(Xrobots(k)-Xrobots(l))*(a-b*exp((-(Xrobots(k)-Xrobots(l))^2)/c));
+				gy=-(Yrobots(k)-Yrobots(l))*(a-b*exp((-(Yrobots(k)-Yrobots(l))^2)/c));
+				gz=-(Zrobots(k)-Zrobots(l))*(a-b*exp((-(Zrobots(k)-Zrobots(l))^2)/c));
+				xd(k)=xd(k)+gx;
+				yd(k)=yd(k)+gy;
+				zd(k)=zd(k)+gz;
+			end
+		end
+
+% Calculation of trajectories(step 0.01 sec)
+		Xrobots(k)=Xrobots(k)+0.01*xd(k);
+		Yrobots(k)=Yrobots(k)+0.01*yd(k);
+		Zrobots(k)=Zrobots(k)+0.01*zd(k);
+	end
+	plot3(Xrobots,Yrobots,Zrobots,'m*')
+	hold on
+	xd=zeros(1,8);
+	yd=zeros(1,8);
+	zd=zeros(1,8);
+end
+hold off
+	
+% Drawing the sphere (Theorem 2)
+[x,y,z] = sphere(50);
+x = x*er + Xcenter;
+y = y*er + Ycenter;
+z = z*er + Zcenter;  
+Spherecolor = [0 0.5 0.5];
+surface(x,y,z,'FaceColor', 'none','EdgeColor',Spherecolor);
+										</code>
+									</pre>            		
+								</details>
+								<p>Below we can see the trajectories of the robots as well as the sphere B<sub>ϵ</sub>(x̄):</p>
+								<figure>
+									<img src="../assets/images/swarm/swarm_e1b_1.png" width="300" alt="Swarm trajectories of Exercise 1b (Image 1)">
+									<img src="../assets/images/swarm/swarm_e1b_2.png" width="302" alt="Swarm trajectories of Exercise 1b (Image 2)">
+								</figure>
+								<p>We see that all robots headed towards the sphere B<sub>ϵ</sub>(x̄) and arrived inside it in the calculated time (according to Theorem 1) [<a href="#gazi">1</a>].</p>
+								<figure>
+									<img src="../assets/images/swarm/swarm_e1b_3.png" width="80" alt="Swarm trajectories of Exercise 1b (Image 3)">
+								</figure>
+						</li>
+						<li>
+							<p><strong>
+								Verify through simulation that x(t)→Ω<sub>ϵ</sub> according to Theorem 2 of the same Ph.D [<a href="#gazi">1</a>].
+							</strong></p>
+							<div class="marg_top">
+								<p>
+									According to Gazi's Theorem 2, if we have a swarm of robots which satisfy eq. (1) after infinite time has passed (t→∞) all robots will reach specific positions and stop. So, it is sufficient to let the robots move for a long time and show that they have reached specific positions near the center of the swarm with zero velocities. We implement the above in code:
+								</p>
+							</div>
+					<details>
+						<summary>
+							Code:
+						</summary>
+						<pre>
+							<code class="language-MATLAB">
+max=20;
+for h=0:0.01:max     
+	for k=1:8
+		for l=1:8
+			if k~=l
+
+% Calculation of function g
+				gx=-(Xrobots(k)-Xrobots(l))*(a-b*exp((-(Xrobots(k)-Xrobots(l))^2)/c));
+				gy=-(Yrobots(k)-Yrobots(l))*(a-b*exp((-(Yrobots(k)-Yrobots(l))^2)/c));
+				gz=-(Zrobots(k)-Zrobots(l))*(a-b*exp((-(Zrobots(k)-Zrobots(l))^2)/c));
+				xd(k)=xd(k)+gx;
+				yd(k)=yd(k)+gy;
+				zd(k)=zd(k)+gz;
+			end
+		end
+% Calculation of trajectories (step 0.01sec)
+		Xrobots(k)=Xrobots(k)+0.01*xd(k);
+		Yrobots(k)=Yrobots(k)+0.01*yd(k);
+		Zrobots(k)=Zrobots(k)+0.01*zd(k);
+	end
+	plot3(Xrobots,Yrobots,Zrobots,'m*')
+	hold on
+	xd=zeros(1,8);
+	yd=zeros(1,8);
+	zd=zeros(1,8);
+end
+hold off
+
+% Show velocities for t->oo
+xd
+yd
+zd								
+							</code>
+						</pre>            		
+					</details>
+					<p>So, we get the following images:</p>
+					<figure>
+						<img src="../assets/images/swarm/swarm_e1c_1.png" width="300" alt="Swarm trajectories of Exercise 1c (Image 1)">
+						<img src="../assets/images/swarm/swarm_e1c_2.png" width="276" alt="Swarm trajectories of Exercise 1c (Image 2)">	
+					</figure>
+					<p>Letting the robots move for 20 sec, we notice that they have ended up in positions near the center of the swarm and remain there as they all have zero velocity (xd, yd, zd express the x, y, z components of the velocity respectively).</p>
+					<figure>
+						<img src="../assets/images/swarm/swarm_e1c_3.png" width="300" alt="Swarm trajectories of Exercise 1c (Image 3)">
+					</figure>
+				</li>
+            		</ol>
+					</li>
+					<li>
+						<p>Let the same group of 8 moving robots in the same space. Let be an R8X8 symmetric matrix. The element R<sub>ij</sub>, i>j is a value drawn from a random uniform distribution from 0 to 1. The adjacency matrix G (as published in IEEE Transactions) is derived from the matrix R, where if the element R<sub>ij</sub>≥0.5, then G<sub>ij</sub>=1, otherwise equal to zero. Let the dynamics of each robotic system correspond to that of a second-order system. Implement a controller so that the symmetrically meshed system is stable and plot the trajectories of the 8 nodes, assuming that their initial connectivity remains invariant in time regardless of their spatial distance.</p>
+						<div class="marg_top">
+							<p>
+								We start by filling the matrix R with values from 0 to 1 using the rand function again and making sure that the array we created is symmetric with the <italic>triu</italic> function. We still fill the matrix G with 1 if the corresponding element of R is ≥ 0.5 and with 0 otherwise. Each row (or column) i of G shows which robot robot i communicates with. We also create the matrix D whose main diagonal point has a value equal to the sum of all elements of the corresponding column of G and all other elements are 0. Finally, we create the Laplacian L= D-G that we will need for our control. The control we will apply is given below: 
+							</p>
+						</div>
+						<p class="eq">ẋ=-L*x (2)</p>
+						<p>Thus, similarly to the first question we get:</p>
+						<p class="eq">x(t+dt)=x(t)+v*dt</p>
+						<p> but with the velocity given by eq. 2. So, we write the following code:</p>
+						<details>
+							<summary>
+								Code:
+							</summary>
+							<pre>
+								<code class="language-MATLAB">
+% Calculation of matrices R,G,L
+R=rand(8,8);
+R=triu(R)+triu(R)';
+G=zeros(8,8);
+for i=1:8
+	for j=1:8
+		if i==j
+			R(i,j)=0; 
+		elseif R(i,j)>=0.5
+			G(i,j)=1;
+		end
+	end
+end
+D=zeros(8,8);
+	
+for i=1:8
+	D(i,i)=sum(G(:,i));
+end
+L=D-G;
+	
+for i=1:1000
+	vx=-L*Xrobots;
+	vy=-L*Yrobots;
+	vz=-L*Zrobots;
+	Xrobots=Xrobots+0.01*vx;
+	Yrobots=Yrobots+0.01*vy;
+	Zrobots=Zrobots+0.01*vz;
+	plot3(Xrobots,Yrobots,Zrobots,'m*')
+	hold on
+end
+hold off
+								</code>
+							</pre>            		
+						</details>
+						<p>The results are shown below:</p>	
+						<figure>
+							<img src="../assets/images/swarm/swarm_b_1.png" width="300" alt="Swarm trajectories of Exercise B (Image 1)">
+							<img src="../assets/images/swarm/swarm_b_2.png" width="290" alt="Swarm trajectories of Exercise B (Image 2)">
+						</figure>	
+						<p>
+							We observe that all the robots reach a common point and stop. So, the system is Lyapunov stable in the sense that all robots always end up in the desired state regardless of the initial conditions (initial robot positions).
+						</p>					
+					</li>
+            	</ol>
+            	<p id="gazi">
+            		[1] Gazi, Veysel. “Swarm aggregations using artificial potentials and sliding-mode control.” IEEE Transactions on Robotics 21 (2005): 1208-1214.
+            	</p>
+            </div>
+            <div class="projects-item-3"></div>            			
+		</main>
+	  	<footer>
+	      	<nav>
+					<ul class="nav_list">
+					  	<li class="left"><a class="nv" href="./projects.html">Projects</a></li>
+					  	<li class="left"><a class="nv" href="./swarm.html">Swarm</a></li>
+						<li class="left"><a class="nv" href="./f_matrix.html">F Matrix</a></li>
+					  	<li class="right"><a class="nv" href="./about.html">About</a></li>
+				  	</ul>
+		  	</nav>
+		  	<nav id="contact_box">
+		  		<ul id="contact">
+					<li>MORE</li>
+		  			<li class="contact_item"><a target="_blank" id="contact_icon_1" class="nv" href="https://www.linkedin.com/in/foivos-papandreou-a1b99a150/" aria-label="My Linkedin Page"><i class="fab fa-linkedin fa-2x"></i></a></li>
+					<li class="contact_item"><a target="_blank" id="contact_icon_2" class="nv" href="https://github.com/FoivosPap" aria-label="My github page"><i class="fa-brands fa-github fa-2x"></i></a></li>
+		  		</ul>
+		  	</nav>
+		  	<div id="signature">
+		  		<small>&copy; 2024 FP Design</small>
+		  	</div>
+	    </footer>
+		<script src="../js/prism.js"></script>
+</body>
+</html>
