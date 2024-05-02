@@ -8,12 +8,10 @@
     </head>
     <body id="top">
         <header>
-            <nav>
-                <ul class="nav_list">
-                    <li class="left"><a class="nv" href="../index.html">Home</a></li>
-                    <li class="left"><a class="nv" href="./projects.html">Projects</a></li>
-                    <li class="right"><a class="nv" href="./about.html">About</a></li>
-                </ul>
+            <nav class="top">
+				<a class="nv" href="../index.html">Home</a>
+                <a class="nv" href="./projects.html">Projects</a>
+                <a class="nv" href="./about.html">About</a>
             </nav>
         </header>
         <div class="bg"> 
@@ -26,15 +24,25 @@
                 <h3>Projects</h3>                
             </div>
             <div class="projects-item-3"> 
-                <div class="proj_img"><a class="prj" href="swarm.html"><img class="imgp" src="../assets/images/projects/swarm.png" alt="image of robotic swarm" width="200p"/></a></div>       
-                <div class="blck">
-                    <div class="proj_title"><h4>Robotic Swarms</h4></div>
-                    <div class="proj_txt"><p>Eight robotic vehicles that form a swarm are simulated in Matlab. A controller is designed so that the equilibrium of the system is Lyapunov stable.</p></div>
-                </div>
-                <div class="proj_img"><a class="prj" href="f_matrix.html"><img class="imgp" src="../assets/images/projects/F_matrix/f_matrix.png" alt="image of a set of stereoscopic images" height="150p"/></a></div>       
-                <div class="blck">
-                    <div class="proj_title"><h4>Fundamental Matrix Calculation</h4></div>
-                    <div class="proj_txt"><p>A corner detection algorithm is used to estimate the corners of an object in two pictures of the same object taken from different angles. The software is developed in Matlab.</p></div>
+                <div class="flex-container">
+                    <div class="proj_box">
+                        <div class="blck_img">
+                            <a class="prj" href="swarm.html"><img class="imgp" src="../assets/images/projects/swarm.png" alt="image of robotic swarm" width="200p"/></a>
+                        </div>       
+                        <div class="blck_txt">
+                            <div class="proj_title"><h4>Robotic Swarms</h4></div>
+                            <div class="proj_txt"><p>Eight robotic vehicles that form a swarm are simulated in Matlab. A controller is designed so that the equilibrium of the system is Lyapunov stable.</p></div>
+                        </div>
+                    </div>
+                    <div class="proj_box">
+                        <div class="blck_img">
+                            <a class="prj" href="f_matrix.html"><img class="imgp" src="../assets/images/projects/F_matrix/f_matrix.png" alt="image of a set of stereoscopic images" height="150p"/></a>
+                        </div>       
+                        <div class="blck_txt">
+                            <div class="proj_title"><h4>Fundamental Matrix Calculation</h4></div>
+                            <div class="proj_txt"><p>A corner detection algorithm is used to estimate the corners of an object in two pictures of the same object taken from different angles. The software is developed in Matlab.</p></div>
+                        </div>
+                    </div>
                 </div>
                 <table style="display:none;" class="proj_table">
                     <colgroup>
@@ -104,22 +112,20 @@
             <div class="projects-item-4"></div>     
         </main>
         <footer>
-            <nav>
-                <ul class="nav_list">
-                    <li class="left"><a class="nv" href="../index.html">Home</a></li>
-                    <li class="left"><a class="nv" href="./projects.html">Projects</a></li>
-                    <li class="right"><a class="nv" href="./about.html">About</a></li>
-                </ul>
+            <nav class="top">
+				<a class="nv" href="../index.html">Home</a>
+                <a class="nv" href="./projects.html">Projects</a>
+                <a class="nv" href="./about.html">About</a>
             </nav>
-            <nav id="contact_box">
-                <ul id="contact">
-                    <li>MORE</li>
-                    <li class="contact_item"><a target="_blank" id="contact_icon_1" class="nv" href="https://www.linkedin.com/in/foivos-papandreou-a1b99a150/" aria-label="My Linkedin Page"><i class="fab fa-linkedin fa-2x"></i></a></li>
-                    <li class="contact_item"><a target="_blank" id="contact_icon_2" class="nv" href="https://github.com/FoivosPap" aria-label="My github page"><i class="fa-brands fa-github fa-2x"></i></a></li>
-                </ul>
-            </nav>
+			<div id="contact">
+				<p>MORE</p>
+			</div>
+		  	<nav id="nv_con" class="con">
+				<a target="_blank" id="contact_icon_1" class="nv_con" href="https://www.linkedin.com/in/foivos-papandreou-a1b99a150/" aria-label="My Linkedin Page"><i class="fab fa-linkedin fa-2x"></i></a>
+				<a target="_blank" id="contact_icon_2" class="nv_con" href="https://github.com/FoivosPap" aria-label="My github page"><i class="fa-brands fa-github fa-2x"></i></a>
+		  	</nav>
             <div id="signature">
-                <small>&copy; 2024 FP Design</small>
+                <small>&copy; 2024 FP design</small>
             </div>
         </footer>
   </body>

@@ -115,24 +115,61 @@ footer{
 }
 
 #contact_box{
-	display: block;
+	display: flex;
 	width: 250px;
-}
-#contact{
 	font-family: "Century Gothic", Arial, Times, serif;
 	color: #FFFFFF;
-	list-style-type: none;
 	padding-left: 8px;
 	height: 70px;
 }
 
-.contact_item{
-		float: left;
+nav.con{
+	background-color: #1F1000;
+	display: flex;
+	text-align: center;
+	height: 38px;
 }
 
-#contact_icon_1, #contact_icon_2{
+a.nv_con{
+	text-transform: uppercase;
+	text-align: center;
+	font-family: "Century Gothic", Arial, Times, serif;
+}
+
+a.nv_con:link{
+	color: #D6742B;
+	background-color: #1F1000;
+	text-align: center;
+}
+a.nv_con:visited{
+	color: #fd9d02;
+	background-color: #1F1000;
+}
+a.nv_con:hover, a.nv:focus{
+	background-color: #1F1000;
+	color: #e27827;
+}
+
+a.nv_con:active{
+	color: #FFFFFF;
+	background-color: #000000;
+}
+
+#contact{
+	margin: 8px;
+	color: #FFFFFF;
+}
+
+#contact_icon_1{
+	float: left;
 	padding: 3px;
-	margin: 0;
+	margin: 2px 2px 2px 8px;	
+}
+
+#contact_icon_2{
+	float: left;
+	padding: 3px;
+	margin: 2px;
 }
 
 main{
@@ -142,6 +179,8 @@ main{
 
 .flex-container{
 	display: flex;
+	justify-content: center;
+	width: 100%;
 }
 
 .grid-container-main{
@@ -271,20 +310,23 @@ main{
 	text-align: center;
 }
 
-@media (max-width: 700px) {
-	nav {   
-	  flex-direction: column;
-	  text-align: center;
-	}
-	.grid-container-main{
-		grid-template-columns: 0% 100% 0%;
-	}
-}
-
 @media screen and (max-width:1250px) {
+	.grid-container-main{
+		grid-template-columns: 10% auto 10%;
+	}
   	.cont_hide{
   		display: none;
   	}	
+}
+
+@media screen and (max-width: 700px) {
+	.grid-container-main{
+		grid-template-columns: 0% 100% 0%;
+	}
+	nav.top{   
+	  flex-direction: column;
+	  text-align: center;
+	}
 }
 
 .table-main{
@@ -314,7 +356,7 @@ main{
 
 /* navigation bar */
 
-nav{
+nav.top{
 	background-color: #1F1000;
 	display: flex;
 	text-align: center;
@@ -326,7 +368,6 @@ ul.min{
 }
 
 a.nv{
-	display: flex;
 	text-transform: uppercase;
 	text-align: center;
 	font-family: "Century Gothic", Arial, Times, serif;
@@ -343,21 +384,15 @@ a.nv:link{
 a.nv:visited{
 	color: #fd9d02;
 	background-color: #1F1000;
-	text-align: center;
 }
-a.nv:hover{
+a.nv:hover, a.nv:focus{
 	background-color: #D6742B;
 	color: #1F1000;
 }
 
-a.nv:focus{
-	color: #FFFFFF;
-	background-color: #1F1000;	
-}
-
 a.nv:active{
 	color: #FFFFFF;
-	background-color: #1F1000;
+	background-color: #000000;
 }
 
 a{
@@ -549,7 +584,6 @@ a.tbl_lnk{
 
 .grid-container-projects{
 	display: grid;
-  	grid-template-columns: 25% auto 25%;
 }
 
 .projects-item-1{
@@ -570,7 +604,7 @@ a.tbl_lnk{
 	grid-column-start: 2;
 	grid-column-end: 3;
 	grid-row-start: 2;
-	grid-row-start: 3;  	
+	grid-row-start: 3;
 }
 
 .projects-item-4{
@@ -580,14 +614,15 @@ a.tbl_lnk{
 	grid-row-start: 3;  	
 }
 
-@media screen and (max-width:700px) {
+@media screen and (max-width:1400px) {
 	.grid-container-projects{
-		grid-template-columns: 0% 100% 0%;
+		grid-template-columns: 10% auto 10%;
 	}
+
  	.projects-item-3{
     width: 100%;
 	padding-left: 0px;
-	padding-right: 0px;
+	padding-right: 3px;
   }
 
 	.projects-item-1, .projects-item-4{
@@ -595,19 +630,74 @@ a.tbl_lnk{
   } 
 }
 
-.blck{
-	float: left;
+@media screen and (max-width:1050px) {
+	.grid-container-projects{
+		grid-template-columns: auto auto auto;
+	}
+
+	.flex-container{
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.projects-item-3{
+	width: 100%;
+	padding-left: 0px;
+	padding-right: 3px;
+	}
+
+	.blck_txt{
+		margin: 5px;
+		max-width: 250px;
+	}
+
+	.proj_title{
+		max-width: 250px;
+	}
+
+}
+
+@media screen and (max-width:700px) {
+	.grid-container-projects{
+		grid-template-columns: auto 100% auto;
+	}	
+}
+
+.blck_txt{
 	height: 200px;
-	text-align: right;
+	max-width: 350px;
+	margin: 10px 30px;
+	text-align: center;
+}
+
+.blck_img{
+	height: 200px;
+	width: 300px;
+	margin: 10px 55px;
+	text-align: center;
+}
+.proj_box{
+	clear:both;
+	justify-self: center;
 }
 
 /* divs */
 
+.resp {
+	width: 100%;
+	max-width: 300px;
+	height: auto;
+}
+
+.resp_sm {
+	width: 100%;
+	max-width: 150px;
+	height: auto;
+}
+
 .proj_img{
 	float: left;
 	text-align: center;
-	width: 300px;
-	height: 200px;
 	margin: 10px;
 }
 
@@ -622,8 +712,8 @@ a.tbl_lnk{
 
 .proj_title{
 	clear: right;
-	width: 300px;
-	margin-top: 35px;
+	max-width: 350px;
+	margin-top: 15px;
 	margin-bottom: 15px;
 }
 

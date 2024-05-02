@@ -1,22 +1,20 @@
 <!DOCTYPE html>
 <html lang = "en">
-<head>
-	<meta charset = "utf-8" name="viewport" content="width=device-width, initial-scale=1">
-	<title>Swarm</title>
-	<link rel="stylesheet" href="../css/mystyle.css">
-	<link href="../css/prism.css" rel="stylesheet" />
-	<script src="https://kit.fontawesome.com/10e7774256.js" crossorigin="anonymous"></script>
-</head>
-<body>
+	<head>
+		<meta charset = "utf-8" name="viewport" content="width=device-width, initial-scale=1">
+		<title>Swarm</title>
+		<link rel="stylesheet" href="../css/mystyle.css">
+		<link href="../css/prism.css" rel="stylesheet" />
+		<script src="https://kit.fontawesome.com/10e7774256.js" crossorigin="anonymous"></script>
+	</head>
+	<body>
 	  	<header>
-	  		<nav>
-	  			<ul class="nav_list">
-			  		<li class="left"><a class="nv" href="./projects.html">Projects</a></li>
-			  		<li class="left"><a class="nv" href="./swarm.html">Swarm</a></li>
-			  		<li class="left"><a class="nv" href="./f_matrix.html">F Matrix</a></li>
-			  		<li class="right"><a class="nv" href="./about.html">About</a></li>
-		  		</ul>
-		  	</nav>
+			<nav class="top">
+				<a class="nv" href="./projects.html">Projects</a>
+				<a class="nv" href="./swarm.html">Swarm</a>
+				<a class="nv" href="./f_matrix.html">F Matrix</a>
+				<a class="nv" href="./about.html">About</a>
+            </nav>
 		</header>
 		<div class="bg">
 			<h1>PROJECTS</h1>
@@ -24,8 +22,8 @@
 		</div>
 		<main class="grid-container-projects">
             <div class="projects-item-1"></div>
-            <div class="projects-item-2" class="sect">
-            	<h3>Swarm aggregation of robotic vehicles</h3>
+			<div class="projects-item-2"><h3>Swarm aggregation of robotic vehicles</h3></div>
+            <div class="projects-item-3" class="sect">
             	<ol class="swarm_list">
             		<li>
 						<p><strong>A group of 8 moving robotic vehicles which are in random positions in a space (cube) 100Χ100Χ100 meters.</strong></p>
@@ -98,7 +96,7 @@ plot3(Xrobots,Yrobots,Zrobots,'gv');
 							This initial state is shown below:	            				
 						</p>
 						<figure>
-							<img src="../assets/images/swarm/cube.png" width="300" alt="Cube">
+							<img class="resp" src="../assets/images/swarm/cube.png" alt="Cube">
 						</figure>
 						<p>
 							We then calculate the trajectories of the 8 robotic vehicles by applying the attractive/repulsive function g(y) from V. Gazi [<a href="#gazi">1</a>]:
@@ -159,8 +157,8 @@ hold off
 						</details>
 						<p>Running the above code, we get the trajectories of the robots for a period of 10 sec with step dt=0.01:</p>
 						<figure>
-							<img src="../assets/images/swarm/swarm_e1a_1.png" width="300" alt="Swarm trajectories of Exercise 1a (Image 1)">
-							<img src="../assets/images/swarm/swarm_e1a_2.png" width="304" alt="Swarm trajectories of Exercise 1a (Image 2)">
+							<img class="resp" src="../assets/images/swarm/swarm_e1a_1.png" alt="Swarm trajectories of Exercise 1a (Image 1)">
+							<img class="resp" src="../assets/images/swarm/swarm_e1a_2.png" alt="Swarm trajectories of Exercise 1a (Image 2)">
 						</figure>
 						<p>
 							We observe that the robots move closer to each other and stop once the distance between them is reduced enough.
@@ -257,12 +255,12 @@ surface(x,y,z,'FaceColor', 'none','EdgeColor',Spherecolor);
 							</details>
 							<p>Below we can see the trajectories of the robots as well as the sphere B<sub>ϵ</sub>(x̄):</p>
 							<figure>
-								<img src="../assets/images/swarm/swarm_e1b_1.png" width="300" alt="Swarm trajectories of Exercise 1b (Image 1)">
-								<img src="../assets/images/swarm/swarm_e1b_2.png" width="302" alt="Swarm trajectories of Exercise 1b (Image 2)">
+								<img class="resp" src="../assets/images/swarm/swarm_e1b_1.png" alt="Swarm trajectories of Exercise 1b (Image 1)">
+								<img class="resp" src="../assets/images/swarm/swarm_e1b_2.png" alt="Swarm trajectories of Exercise 1b (Image 2)">
 							</figure>
 							<p>We see that all robots headed towards the sphere B<sub>ϵ</sub>(x̄) and arrived inside it in the calculated time (according to Theorem 1) [<a href="#gazi">1</a>].</p>
 							<figure>
-								<img src="../assets/images/swarm/swarm_e1b_3.png" width="80" alt="Swarm trajectories of Exercise 1b (Image 3)">
+								<img class="resp_sm" src="../assets/images/swarm/swarm_e1b_3.png" alt="Swarm trajectories of Exercise 1b (Image 3)">
 							</figure>
 					</li>
 					<li class="li_2nd">
@@ -317,12 +315,12 @@ zd
 				</details>
 				<p>So, we get the following images:</p>
 				<figure>
-					<img src="../assets/images/swarm/swarm_e1c_1.png" width="300" alt="Swarm trajectories of Exercise 1c (Image 1)">
-					<img src="../assets/images/swarm/swarm_e1c_2.png" width="276" alt="Swarm trajectories of Exercise 1c (Image 2)">	
+					<img class="resp" src="../assets/images/swarm/swarm_e1c_1.png" alt="Swarm trajectories of Exercise 1c (Image 1)">
+					<img class="resp" src="../assets/images/swarm/swarm_e1c_2.png" alt="Swarm trajectories of Exercise 1c (Image 2)">	
 				</figure>
 				<p>Letting the robots move for 20 sec, we notice that they have ended up in positions near the center of the swarm and remain there as they all have zero velocity (xd, yd, zd express the x, y, z components of the velocity respectively).</p>
 				<figure>
-					<img src="../assets/images/swarm/swarm_e1c_3.png" width="300" alt="Swarm trajectories of Exercise 1c (Image 3)">
+					<img class="resp" src="../assets/images/swarm/swarm_e1c_3.png" alt="Swarm trajectories of Exercise 1c (Image 3)">
 				</figure>
 			</li>
 				</ol>
@@ -380,8 +378,8 @@ hold off
 						</details>
 						<p>The results are shown below:</p>	
 						<figure>
-							<img src="../assets/images/swarm/swarm_b_1.png" width="300" alt="Swarm trajectories of Exercise B (Image 1)">
-							<img src="../assets/images/swarm/swarm_b_2.png" width="290" alt="Swarm trajectories of Exercise B (Image 2)">
+							<img class="resp" src="../assets/images/swarm/swarm_b_1.png" alt="Swarm trajectories of Exercise B (Image 1)">
+							<img class="resp" src="../assets/images/swarm/swarm_b_2.png" alt="Swarm trajectories of Exercise B (Image 2)">
 						</figure>	
 						<p>
 							We observe that all the robots reach a common point and stop. So, the system is Lyapunov stable in the sense that all robots always end up in the desired state regardless of the initial conditions (initial robot positions).
@@ -392,28 +390,26 @@ hold off
             		[1] Gazi, Veysel. “Swarm aggregations using artificial potentials and sliding-mode control.” IEEE Transactions on Robotics 21 (2005): 1208-1214.
             	</p>
             </div>
-            <div class="projects-item-3"></div>            			
+            <div class="projects-item-4"></div>            			
 		</main>
 	  	<footer>
-	      	<nav>
-					<ul class="nav_list">
-					  	<li class="left"><a class="nv" href="./projects.html">Projects</a></li>
-					  	<li class="left"><a class="nv" href="./swarm.html">Swarm</a></li>
-						<li class="left"><a class="nv" href="./f_matrix.html">F Matrix</a></li>
-					  	<li class="right"><a class="nv" href="./about.html">About</a></li>
-				  	</ul>
-		  	</nav>
-		  	<nav id="contact_box">
-		  		<ul id="contact">
-					<li>MORE</li>
-		  			<li class="contact_item"><a target="_blank" id="contact_icon_1" class="nv" href="https://www.linkedin.com/in/foivos-papandreou-a1b99a150/" aria-label="My Linkedin Page"><i class="fab fa-linkedin fa-2x"></i></a></li>
-					<li class="contact_item"><a target="_blank" id="contact_icon_2" class="nv" href="https://github.com/FoivosPap" aria-label="My github page"><i class="fa-brands fa-github fa-2x"></i></a></li>
-		  		</ul>
+			<nav class="top">
+				<a class="nv" href="./projects.html">Projects</a>
+				<a class="nv" href="./swarm.html">Swarm</a>
+				<a class="nv" href="./f_matrix.html">F Matrix</a>
+				<a class="nv" href="./about.html">About</a>
+            </nav>
+			<div id="contact">
+				<p>MORE</p>
+			</div>
+		  	<nav id="nv_con" class="con">
+				<a target="_blank" id="contact_icon_1" class="nv_con" href="https://www.linkedin.com/in/foivos-papandreou-a1b99a150/" aria-label="My Linkedin Page"><i class="fab fa-linkedin fa-2x"></i></a>
+				<a target="_blank" id="contact_icon_2" class="nv_con" href="https://github.com/FoivosPap" aria-label="My github page"><i class="fa-brands fa-github fa-2x"></i></a>
 		  	</nav>
 		  	<div id="signature">
-		  		<small>&copy; 2024 FP Design</small>
+		  		<small>&copy; 2024 FP design</small>
 		  	</div>
 	    </footer>
 		<script src="../js/prism.js"></script>
-</body>
+	</body>
 </html>

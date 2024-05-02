@@ -7,16 +7,14 @@
 	<link href="../css/prism.css" rel="stylesheet" />
 	<script src="https://kit.fontawesome.com/10e7774256.js" crossorigin="anonymous"></script>
 </head>
-<body>
-	  	<header>
-	  		<nav>
-	  			<ul class="nav_list">
-			  		<li class="left"><a class="nv" href="./projects.html">Projects</a></li>
-			  		<li class="left"><a class="nv" href="./swarm.html">Swarm</a></li>
-			  		<li class="left"><a class="nv" href="./f_matrix.html">F Matrix</a></li>
-			  		<li class="right"><a class="nv" href="./about.html">About</a></li>
-		  		</ul>
-		  	</nav>
+	<body>
+		<header>
+			<nav class="top">
+				<a class="nv" href="./projects.html">Projects</a>
+				<a class="nv" href="./swarm.html">Swarm</a>
+				<a class="nv" href="./f_matrix.html">F Matrix</a>
+				<a class="nv" href="./about.html">About</a>
+			</nav>
 		</header>
 		<div class="bg">
 			<h1>PROJECTS</h1>
@@ -24,349 +22,513 @@
 		</div>
 		<main class="grid-container-projects">
             <div class="projects-item-1"></div>
-            <div class="projects-item-2" class="sect">
-            	<h3>Swarm aggregation of robotic vehicles</h3>
-            	<ol class="swarm_list">
-            		<li><p>A group of 8 moving robotic vehicles which are in random positions in a space (cube) 100Χ100Χ100 meters.</p>
-            		<ol>
-            			<li>
-							<p><strong>
-								Using the attractive/repulsive function (2.2) from V. Gazi [<a href="#gazi">1</a>]  with a = 1, b = 20, and c = 0.2, show the trajectories in 3D space of the moving vehicles.
-							</strong></p>
-							<div  class="marg_top">
-								<p>
-									First, we draw the cube of dimensions 100x100x100 and place inside it the 8 robotic vehicles in random positions chosen using the pseudorandom number generator, rand. 
-									So, we have the following code:
-								</p>
-							</div>
-            				<details>
-			            		<summary>
-			            			Code:
-			            		</summary>
-				            	<pre>
-				            		<code class="language-MATLAB">
-
-				            		</code>
-				            	</pre>            		
-	            			</details>
-	            			<p>
-	            				This initial state is shown below:	            				
-	            			</p>
-							<figure>
-								<img src="../assets/images/swarm/cube.png" width="300" alt="Cube">
-							</figure>
-	            			<p>
-	            				We then calculate the trajectories of the 8 robotic vehicles by applying the attractive/repulsive function g(y) from V. Gazi [<a href="#gazi">1</a>]:
-	            			</p>
-	            			<p id="eq_1" class="eq">g(y)=-y[&#119886;-b*exp(-&#124;&#124;y&#124;&#124;<sup>2</sup>/c)] (1),</p>
-	            			<p>
-	            				for a = 1, b = 20, and c = 0.2.
-	            			</p>
-	            			<p>
-	            				The function g(y) takes as input for each robotic vehicle the positions of the rest and gives us the derivative of the displacement, i.e. its velocity. This way we can find the position of the next moment in time (t+dt):
-	            			</p>
-	            			<p class="eq">
-	            				x(t+dt)=x(t)v*dt,
-	            			</p>
-	            			<p>
-	            				where v is the velocity and dt=0.01.
-	            			</p>
-							<p>
-								So, we impement the above:
-							</p>
-            				<details>
-			            		<summary>
-			            			Code:
-			            		</summary>
-				            	<pre>
-				            		<code class="language-MATLAB">
-max=10; 
-for h=0:0.01:max     
-    for k=1:8
-        for l=1:8
-            if k~=l
-
-% Calculation of function g
-               gx=-(Xrobots(k)-Xrobots(l))*(a-b*exp((-(Xrobots(k)-Xrobots(l))^2)/c));
-               gy=-(Yrobots(k)-Yrobots(l))*(a-b*exp((-(Yrobots(k)-Yrobots(l))^2)/c));
-               gz=-(Zrobots(k)-Zrobots(l))*(a-b*exp((-(Zrobots(k)-Zrobots(l))^2)/c));
-               xd(k)=xd(k)+gx;
-               yd(k)=yd(k)+gy;
-               zd(k)=zd(k)+gz;
-            end
-        end
-
-% Calculation of trajectories (step 0.01sec)
-        Xrobots(k)=Xrobots(k)+0.01*xd(k);
-        Yrobots(k)=Yrobots(k)+0.01*yd(k);
-        Zrobots(k)=Zrobots(k)+0.01*zd(k);
-    end
-    plot3(Xrobots,Yrobots,Zrobots,'m*')
-    hold on
-    xd=zeros(1,8);
-    yd=zeros(1,8);
-    zd=zeros(1,8);
-end
-hold off
-
-				            		</code>
-				            	</pre>            		
-	            			</details>
-							<p>Running the above code, we get the trajectories of the robots for a period of 10 sec with step dt=0.01:</p>
-							<figure>
-								<img src="../assets/images/swarm/swarm_e1a_1.png" width="300" alt="Swarm trajectories of Exercise 1a (Image 1)">
-								<img src="../assets/images/swarm/swarm_e1a_2.png" width="304" alt="Swarm trajectories of Exercise 1a (Image 2)">
-							</figure>
-							<p>
-								We observe that the robots move closer to each other and stop once the distance between them is reduced enough.
-							</p>
-            			</li>
-						<li>
-							<p><strong>
-								Verify through motion simulation the convergence to finite time on the sphere B<sub>ϵ</sub>(x̄) according to Theorem 1 [<a href="#gazi">1</a>].
-							</strong></p>
-							<div  class="marg_top">
-								<p>
-									According to Gazi's Theorem 1 if we have a swarm of robots which satisfy <a href="#eq_1">Eq. 1</a> will converge within the sphere B<sub>ε</sub>(x̄):
-								</p>
-							</div>		
-								<p class="eq">B<sub>ϵ</sub>(x̄){x:&#124;&#124;x-x̄&#124;&#124;≤ϵ}, where ϵ=(b/&#119886;*sqrt(c/2)*exp(-1/2)) and x̄ is the center of the swarm.</p>
-								<p>In fact, this will happen in a time that will not exceed the time limit:</p>
-								<p class="eq">ṯ=max<sub>i∈S</sub>{(-1/(2*&#119886;))*ln(ϵ<sup>2</sup>/(2*V<sub>i</sub>(0)))},</p>
-								<p>where V<sub>i</sub> is the Lyapunov function that corresponds to robot i for t=0. Thus, we have the following code:</p>
-								<details>
-									<summary>
-										Code:
-									</summary>
-									<pre>
-										<code class="language-MATLAB">
-% Calculation of the center of the swarm
-Xcenter=sum(Xrobots)/8;   
-Ycenter=sum(Yrobots)/8;   
-Zcenter=sum(Zrobots)/8; 
-	
-ex=Xrobots-Xcenter;
-ey=Yrobots-Ycenter;
-ez=Zrobots-Zcenter;
-	
-Vx=0.5*power(ex,2);	
-Vy=0.5*power(ey,2);
-Vz=0.5*power(ez,2);
-	
-% Calculation of the time limit (Theorem 1)
-max=0;
-for i=1:8
-	temp=-(1/(2*a))*log(er^2/(2*Vx(i)));
-	if temp>max
-		max=temp;
-	end
-	temp=-(1/(2*a))*log(er^2/(2*Vy(i)));
-	if temp>max
-		max=temp;
-	end
-	temp=-(1/(2*a))*log(er^2/(2*Vz(i)));
-	if temp>max
-		max=temp;
-	end
-end
-
-for h=0:0.01:max     
-	for k=1:8
-		for l=1:8
-			if k~=l
-
-
-
-% Calculation of function g
-				gx=-(Xrobots(k)-Xrobots(l))*(a-b*exp((-(Xrobots(k)-Xrobots(l))^2)/c));
-				gy=-(Yrobots(k)-Yrobots(l))*(a-b*exp((-(Yrobots(k)-Yrobots(l))^2)/c));
-				gz=-(Zrobots(k)-Zrobots(l))*(a-b*exp((-(Zrobots(k)-Zrobots(l))^2)/c));
-				xd(k)=xd(k)+gx;
-				yd(k)=yd(k)+gy;
-				zd(k)=zd(k)+gz;
-			end
-		end
-
-% Calculation of trajectories(step 0.01 sec)
-		Xrobots(k)=Xrobots(k)+0.01*xd(k);
-		Yrobots(k)=Yrobots(k)+0.01*yd(k);
-		Zrobots(k)=Zrobots(k)+0.01*zd(k);
-	end
-	plot3(Xrobots,Yrobots,Zrobots,'m*')
-	hold on
-	xd=zeros(1,8);
-	yd=zeros(1,8);
-	zd=zeros(1,8);
-end
-hold off
-	
-% Drawing the sphere (Theorem 2)
-[x,y,z] = sphere(50);
-x = x*er + Xcenter;
-y = y*er + Ycenter;
-z = z*er + Zcenter;  
-Spherecolor = [0 0.5 0.5];
-surface(x,y,z,'FaceColor', 'none','EdgeColor',Spherecolor);
-										</code>
-									</pre>            		
-								</details>
-								<p>Below we can see the trajectories of the robots as well as the sphere B<sub>ϵ</sub>(x̄):</p>
-								<figure>
-									<img src="../assets/images/swarm/swarm_e1b_1.png" width="300" alt="Swarm trajectories of Exercise 1b (Image 1)">
-									<img src="../assets/images/swarm/swarm_e1b_2.png" width="302" alt="Swarm trajectories of Exercise 1b (Image 2)">
-								</figure>
-								<p>We see that all robots headed towards the sphere B<sub>ϵ</sub>(x̄) and arrived inside it in the calculated time (according to Theorem 1) [<a href="#gazi">1</a>].</p>
-								<figure>
-									<img src="../assets/images/swarm/swarm_e1b_3.png" width="80" alt="Swarm trajectories of Exercise 1b (Image 3)">
-								</figure>
-						</li>
-						<li>
-							<p><strong>
-								Verify through simulation that x(t)→Ω<sub>ϵ</sub> according to Theorem 2 of the same Ph.D [<a href="#gazi">1</a>].
-							</strong></p>
-							<div class="marg_top">
-								<p>
-									According to Gazi's Theorem 2, if we have a swarm of robots which satisfy eq. (1) after infinite time has passed (t→∞) all robots will reach specific positions and stop. So, it is sufficient to let the robots move for a long time and show that they have reached specific positions near the center of the swarm with zero velocities. We implement the above in code:
-								</p>
-							</div>
-					<details>
-						<summary>
-							Code:
-						</summary>
-						<pre>
-							<code class="language-MATLAB">
-max=20;
-for h=0:0.01:max     
-	for k=1:8
-		for l=1:8
-			if k~=l
-
-% Calculation of function g
-				gx=-(Xrobots(k)-Xrobots(l))*(a-b*exp((-(Xrobots(k)-Xrobots(l))^2)/c));
-				gy=-(Yrobots(k)-Yrobots(l))*(a-b*exp((-(Yrobots(k)-Yrobots(l))^2)/c));
-				gz=-(Zrobots(k)-Zrobots(l))*(a-b*exp((-(Zrobots(k)-Zrobots(l))^2)/c));
-				xd(k)=xd(k)+gx;
-				yd(k)=yd(k)+gy;
-				zd(k)=zd(k)+gz;
-			end
-		end
-% Calculation of trajectories (step 0.01sec)
-		Xrobots(k)=Xrobots(k)+0.01*xd(k);
-		Yrobots(k)=Yrobots(k)+0.01*yd(k);
-		Zrobots(k)=Zrobots(k)+0.01*zd(k);
-	end
-	plot3(Xrobots,Yrobots,Zrobots,'m*')
-	hold on
-	xd=zeros(1,8);
-	yd=zeros(1,8);
-	zd=zeros(1,8);
-end
-hold off
-
-% Show velocities for t->oo
-xd
-yd
-zd								
-							</code>
-						</pre>            		
-					</details>
-					<p>So, we get the following images:</p>
-					<figure>
-						<img src="../assets/images/swarm/swarm_e1c_1.png" width="300" alt="Swarm trajectories of Exercise 1c (Image 1)">
-						<img src="../assets/images/swarm/swarm_e1c_2.png" width="276" alt="Swarm trajectories of Exercise 1c (Image 2)">	
-					</figure>
-					<p>Letting the robots move for 20 sec, we notice that they have ended up in positions near the center of the swarm and remain there as they all have zero velocity (xd, yd, zd express the x, y, z components of the velocity respectively).</p>
-					<figure>
-						<img src="../assets/images/swarm/swarm_e1c_3.png" width="300" alt="Swarm trajectories of Exercise 1c (Image 3)">
-					</figure>
-				</li>
-            		</ol>
-					</li>
+			<div class="projects-item-2"><h3>Fundamental Matrix Calculation</h3></div>
+            <div class="projects-item-3" class="sect">
+            	<ol class="swarm_list_2nd">
 					<li>
-						<p>Let the same group of 8 moving robots in the same space. Let be an R8X8 symmetric matrix. The element R<sub>ij</sub>, i>j is a value drawn from a random uniform distribution from 0 to 1. The adjacency matrix G (as published in IEEE Transactions) is derived from the matrix R, where if the element R<sub>ij</sub>≥0.5, then G<sub>ij</sub>=1, otherwise equal to zero. Let the dynamics of each robotic system correspond to that of a second-order system. Implement a controller so that the symmetrically meshed system is stable and plot the trajectories of the 8 nodes, assuming that their initial connectivity remains invariant in time regardless of their spatial distance.</p>
+						<p><strong>
+							We are given two images, <a href="../assets/images/projects/F_matrix/left.jpg">left.jpg</a> and <a href="../assets/images/projects/F_matrix/right.jpg">right.jpg</a> containing an object photographed from a different position maintaining all camera settings. The corresponding <a href="../assets/images/projects/F_matrix/left.txt">left.txt</a> and <a href="../assets/images/projects/F_matrix/right.txt">right.txt</a> files contain nine coordinates of some of the object’s corners. Complete the remaining coordinate matches for the angles visible in both images.
+						</strong></p>
 						<div class="marg_top">
 							<p>
-								We start by filling the matrix R with values from 0 to 1 using the rand function again and making sure that the array we created is symmetric with the <italic>triu</italic> function. We still fill the matrix G with 1 if the corresponding element of R is ≥ 0.5 and with 0 otherwise. Each row (or column) i of G shows which robot robot i communicates with. We also create the matrix D whose main diagonal point has a value equal to the sum of all elements of the corresponding column of G and all other elements are 0. Finally, we create the Laplacian L= D-G that we will need for our control. The control we will apply is given below: 
+								We use the function getpts which gives us the coordinates of the points we select with the cursor, i.e. the points of the corners of each image. The results are shown below:
 							</p>
 						</div>
-						<p class="eq">ẋ=-L*x (2)</p>
-						<p>Thus, similarly to the first question we get:</p>
-						<p class="eq">x(t+dt)=x(t)+v*dt</p>
-						<p> but with the velocity given by eq. 2. So, we write the following code:</p>
+						<figure>
+							<img class="resp" src="../assets/images/projects/F_matrix/f_matrix_q1_1.png" alt="Points Coordinates (Question 1)">
+						</figure>
+						<p>
+							Additionally, we import the points from the two text files given (left.txt, right.txt), register them in tables and add to them those points, from those we found manually, which are not already contained in the text files. Finally, we display these points on the images. The code implementation is shown below:
+						</p>
 						<details>
 							<summary>
 								Code:
 							</summary>
 							<pre>
 								<code class="language-MATLAB">
-% Calculation of matrices R,G,L
-R=rand(8,8);
-R=triu(R)+triu(R)';
-G=zeros(8,8);
-for i=1:8
-	for j=1:8
-		if i==j
-			R(i,j)=0; 
-		elseif R(i,j)>=0.5
-			G(i,j)=1;
+close all
+clear all
+clc
+	
+%% Question 1
+	
+A=dlmread('left.txt');
+B=dlmread('right.txt');
+I1 = im2double(imread('left.jpg'));
+I2 = im2double(imread('right.jpg'));
+	
+figure;
+imshow(I1);
+hold on
+	
+%[xp1,yp1]=getpts
+Xp1=[40;56;145;175;210;137;62;87;81;105;111;159;163;177;174;191;198;189;197;195];
+Yp1=[89;21;127;45;78;226;160;184;138;152;205;173;148;132;154;112;106;128;122;131];
+	
+XPoints1=A(:,1);
+YPoints1=A(:,2);
+	
+n=length(A)+1;
+k=0;
+for i=1:length(Xp1)
+	for j=1:length(A)
+		if abs(Xp1(i)-A(j,1))&gt;5 && abs(Yp1(i)-A(j,2))&gt;5
+			k=1;
 		end
 	end
+	if k==0
+		XPoints1(n)=Xp1(i);
+		YPoints1(n)=Yp1(i);
+		n=n+1;
+	end
+	k=0;
 end
-D=zeros(8,8);
 	
-for i=1:8
-	D(i,i)=sum(G(:,i));
-end
-L=D-G;
+plot(XPoints1,YPoints1,'rv')
+hold on
+title('Left Image');
+legend('Corners imported from txts and manually chosen','Location','SouthOutside')
 	
-for i=1:1000
-	vx=-L*Xrobots;
-	vy=-L*Yrobots;
-	vz=-L*Zrobots;
-	Xrobots=Xrobots+0.01*vx;
-	Yrobots=Yrobots+0.01*vy;
-	Zrobots=Zrobots+0.01*vz;
-	plot3(Xrobots,Yrobots,Zrobots,'m*')
-	hold on
+figure;
+imshow(I2);
+hold on
+	
+%[xp2,yp2]=getpts
+Xp2=[42;47;105;75;91;70;124;104;89;148;147;170;169;199;196;210;207;211;224;181];
+Yp2=[36;94;126;136;150;156;223;198;181;176;149;132;157;109;130;105;123;133;74;38];
+XPoints2=B(:,1);
+YPoints2=B(:,2);
+	
+n=length(B)+1;
+k=0;
+for i=1:length(Xp1)   
+	for j=1:length(A)
+		if abs(Xp2(i)-B(j,1))&gt;5 && abs(Yp2(i)-B(j,2))&gt;5
+			k=1;
+		end
+	end
+	if k==0
+		XPoints2(n)=Xp2(i);
+		YPoints2(n)=Yp2(i);
+		n=n+1;
+	end
+	k=0;
 end
-hold off
+	
+plot(XPoints2,YPoints2,'g*')
+hold on
+title('Right Image');
+legend('Corners imported from txts and manually chosen','Location','SouthOutside');
 								</code>
 							</pre>            		
 						</details>
-						<p>The results are shown below:</p>	
-						<figure>
-							<img src="../assets/images/swarm/swarm_b_1.png" width="300" alt="Swarm trajectories of Exercise B (Image 1)">
-							<img src="../assets/images/swarm/swarm_b_2.png" width="290" alt="Swarm trajectories of Exercise B (Image 2)">
-						</figure>	
 						<p>
-							We observe that all the robots reach a common point and stop. So, the system is Lyapunov stable in the sense that all robots always end up in the desired state regardless of the initial conditions (initial robot positions).
-						</p>					
+							So, we get the below images:            				
+						</p>
+						<figure>
+							<img class="resp" src="../assets/images/projects/F_matrix/f_matrix_q1_2.png" alt="Corners identified on left image">
+							<img class="resp" src="../assets/images/projects/F_matrix/f_matrix_q1_3.png" alt="Corners identified on right image">
+						</figure>
+					</li>
+					<li>
+						<p><strong>
+							Calculate, using a corner-finding algorithm, the coordinates of the edges of the object and compare them with those estimated in Question 1, for both images. Calculate the mean square error.
+						</strong></p>
+						<div class="marg_top">
+							<p>
+								We use the function vision.CornerDetector in which we define Harris corner detection (Harris & Stephens) as a method and testing different pixel neighborhoods and different sensitivity (so as to find enough points without allowing errors) we manage to get 16 correct points in the left image and 17 in the right without errors. We write the code below:
+							</p>
+						</div>
+						<details>
+							<summary>
+								Code:
+							</summary>
+							<pre>
+								<code class="language-MATLAB">
+%% Question 2
+
+cD=vision.CornerDetector('Method', 'Harris corner detection (Harris & Stephens)',...
+	'NeighborhoodSize',[17 17]);
+pts1 = step(cD, I1);
+cD=vision.CornerDetector('Method','Harris corner detection (Harris & Stephens)',...
+	'NeighborhoodSize',[17 17],'Sensitivity',0.027);
+pts2 = step(cD, I2);
+	
+figure;
+J1 = insertMarker(I1, pts1, 'Color', 'y');
+imshow(J1); 
+title ('Corners detected in left image'); 
+	
+figure;
+J2 = insertMarker(I2, pts2, 'Color', 'c');
+imshow(J2); 
+title ('Corners detected in right image'); 									
+								</code>
+							</pre>            		
+						</details>
+						<p>
+							The matches are shown below:
+						</p>
+						<figure>
+							<img class="resp" src="../assets/images/projects/F_matrix/f_matrix_q2_1.png" alt="Detected corners in left image (Question 2)">
+							<img class="resp" src="../assets/images/projects/F_matrix/f_matrix_q2_2.png" alt="Detected corners in right image (Question 2)">
+						</figure>
+						<p>
+							Then, we find the corresponding points of question 1:<br>
+							Mpts1=[208 81;111 205;198 106;53 19;177 132;159 173;79 139;192 132;163 148; 105 152;145 127;37 89;87 184;174 154;173 45;136 225];<br>
+							Mpts2=[148 176;222 72;170 132;210 105;196 130;40 35;147 149;181 38;104 198; 199 109;74 135;169 157;207 123;104 127;89 181;46 94;91 150];<br>
+							and we calculate the mean squared error:
+						</p>
+						<p class="eq">MSE=(1/n)*&sum;<sub>i=1&rarr;n</sub>(&#562;<sub>i</sub>-Y<sub>i</sub>)<sup>2</sup></p>
+						<details>
+							<summary>
+								Code:
+							</summary>
+							<pre>
+								<code class="language-MATLAB">
+mse1=sum(sum((Mpts1-double(pts1)).^2,2),1)/length(pts1)
+mse2=sum(sum((Mpts2-double(pts2)).^2,2),1)/length(pts2)									
+								</code>
+							</pre>            		
+						</details>
+						<p>
+							So, we get the results:
+						</p>
+						<figure>
+							<img class="resp_sm" src="../assets/images/projects/F_matrix/f_matrix_q2_3.png" alt="Mean Squared Error (Question 2)">
+						</figure>
+					</li>
+					<li>
+						<p><strong>
+							Apply an algorithm to match x and x' coordinates to the two images for the corners of the object you identified in step 2. What do you notice?
+						</strong></p>
+						<div class="marg_top">
+							<p>
+								We use the extractFeatures function to get the matches from the two images and with threshold=9 we manage to get 10 matches. We notice that the matches finding algorithm, while having 16 and 17 points from the two images, can only identify significantly fewer matches (10). At the same time, if we introduce other parameters to the algorithm, it returns more matches which are incorrect. The code is shown below:
+							</p>
+						</div>
+						<details>
+							<summary>
+								Code:
+							</summary>
+							<pre>
+								<code class="language-MATLAB">
+%% Question 3
+
+[features1, points1] = extractFeatures(I1, Mpts1, 'BlockSize', 15);
+[features2, points2] = extractFeatures(I2, Mpts2, 'BlockSize', 15);
+	
+indexPairs = matchFeatures(features1,features2,'MatchThreshold',9,'Metric','SSD');
+matched_points1 = points1(indexPairs(:, 1), :);
+matched_points2 = points2(indexPairs(:, 2), :);
+cvexShowMatches(I1,I2,matched_points1,matched_points2,'Left','Right');													
+								</code>
+							</pre>            		
+						</details>
+						<p>
+							The correct matches are shown in the below image:
+						</p>
+						<figure>
+							<img class="resp" src="../assets/images/projects/F_matrix/f_matrix_q3_1.png" alt="Correct Matches Found (Question 3)">
+						</figure>
+					</li>
+					<li>
+						<p><strong>
+							Using the 8-point method calculate the F (fundamental matrix) by randomly selecting eight points calculated in step 3. Calculate the error:
+						</strong></p>
+						<p class="eq"><strong>Error(F)=&sum;d(x',Fx)+&sum;d(x,F<sup>T</sup>x')</strong></p>
+						<p><strong>Choose a different octet of point matches and calculate the F matrix and the error d(.,.), i.e. the square of the Euclidean distance.</strong></p>
+						<div class="marg_top">
+							<p>
+								We randomly select eight of the points assigned in Question 3. We calculate the F matrix with the estimateFundamentalMatrix function and the normalized 8-point method, and then calculate Error(F) according to the given formula. Because the 8-point algorithm gives large error values due to the large values of the elements it takes as input, we normalize the points we have according to Hartley's normalized 8-point algorithm. We achieve this with the normalise2dps.m function contained in this project folder. We also denormalize F. Finally, we repeat for a new random set of 8 points. So, we write the following code:
+							</p>
+						</div>
+						<details>
+							<summary>
+								Code:
+							</summary>
+							<pre>
+								<code class="language-MATLAB">
+eightpoint1=zeros(8,2);
+eightpoint2=zeros(8,2);
+mp1=zeros(10,3);
+mp2=zeros(10,3);
+for n=1:10
+	mp1(n,:)=[matched_points1(n,:) 1];
+	mp2(n,:)=[matched_points2(n,:) 1];
+end
+[newpts1, T1] = normalise2dpts(mp1');
+[newpts2, T2] = normalise2dpts(mp2');
+for k=1:2
+	r1=0;
+	r2=0;
+	while r1==r2
+		r1=randi(10,1);
+		r2=randi(10,1);
+	end
+	j=1;
+	for i=1:10
+		if i~=r1 &&  i~=r2
+			eightpoint1(j,1)=matched_points1(i,1);
+			eightpoint1(j,2)=matched_points1(i,2);
+			eightpoint2(j,1)=matched_points2(i,1);
+			eightpoint2(j,2)=matched_points2(i,2);
+			j=j+1;
+		end
+	end
+	F=estimateFundamentalMatrix(eightpoint1,eightpoint2,'Method', 'Norm8Point');
+	F
+	Fden=T2'*F*T1;
+	
+	sumer=0;
+	for n=1:length(newpts1)       
+		er=sum(((newpts2(:,n))-Fden*(newpts1(:,n))).^2)+...
+			sum(((newpts1(:,n))-Fden'*(newpts2(:,n))).^2);
+		sumer=sumer+er;
+	end
+	sumer
+end															
+								</code>
+							</pre>            		
+						</details>
+						<p>
+							We get the following images:
+						</p>
+						<figure>
+							<img class="resp" src="../assets/images/projects/F_matrix/f_matrix_q4_1.png" alt="Image of first set of points and matches between left and right image (Question 4)">
+							<img class="resp" src="../assets/images/projects/F_matrix/f_matrix_q4_2.png" alt="Image of second set of points and matches between left and right image (Question 4)">
+							<img class="resp" src="../assets/images/projects/F_matrix/f_matrix_q4_3.png" alt="First set of points F matrix and error (Question 4)">
+							<img class="resp" src="../assets/images/projects/F_matrix/f_matrix_q4_4.png" alt="Second set of points F matrix and error (Question 4)">
+						</figure>
+					</li>
+					<li>
+						<p><strong>
+							Find the set of 8 points that gives you the minimum error. Compare the coordinates of the eight points with those you estimated in Question 1. Show the edges of the object. How are they distributed in the object?
+						</strong></p>
+						<div class="marg_top">
+							<p>
+								We work similarly by finding the minimum error and, additionally, we find the edges with the EdgeDetector:
+							</p>
+						</div>
+						<details>
+							<summary>
+								Code:
+							</summary>
+							<pre>
+								<code class="language-MATLAB">
+%% Question 5
+
+ep1=zeros(8,2);
+ep2=zeros(8,2);
+ep11=zeros(8,3);
+ep22=zeros(8,3);
+mp1=zeros(10,3);
+mp2=zeros(10,3);
+k=2;
+n=1;
+t=1;
+min_er=Inf;
+	
+for j=1:10
+	for k=j+1:10
+		for i=1:10
+			if i~=j && i~=k 
+				ep1(t,1)=matched_points1(i,1);
+				ep1(t,2)=matched_points1(i,2);
+				ep2(t,1)=matched_points2(i,1);
+				ep2(t,2)=matched_points2(i,2);
+				t=t+1;
+			end
+		end
+		
+		t=1;
+		sumer=0;
+	
+		for n=1:8
+			ep11(n,:)=[ep1(n,:) 1];
+			ep22(n,:)=[ep2(n,:) 1];
+		end
+		F=estimateFundamentalMatrix(ep1,ep2,'Method', 'Norm8Point');
+		Fden=T2'*F*T1;
+		for n=1:length(newpts1)       
+			er=sum(((newpts2(:,n))-Fden*(newpts1(:,n))).^2)+...
+				sum(((newpts1(:,n))-Fden'*(newpts2(:,n))).^2);
+			sumer=sumer+er;
+		end
+		if sumer&gt;min_er 
+				min_er=sumer;
+				tmp1=j;
+				tmp2=k;
+		end
+	end
+end    
+min_er
+	
+eightpoint1=zeros(8,2);
+eightpoint2=zeros(8,2);
+	
+j=1;
+for i=1:10
+	if i~=tmp1 &&  i~=tmp2
+		eightpoint1(j,1)=matched_points1(i,1);
+		eightpoint1(j,2)=matched_points1(i,2);
+		eightpoint2(j,1)=matched_points2(i,1);
+		eightpoint2(j,2)=matched_points2(i,2);
+		j=j+1;
+	end
+end
+F=estimateFundamentalMatrix(eightpoint1,eightpoint2,'Method', 'Norm8Point');
+F
+	
+cvexShowMatches(I1,I2,eightpoint1,eightpoint2,'Left','Right');
+	
+hedge = vision.EdgeDetector;
+hidtypeconv = vision.ImageDataTypeConverter('OutputDataType','single');
+img1 = step(hidtypeconv, I1); 
+img2 = step(hidtypeconv, I2);
+edges1 = step(hedge, img1); 
+edges2 = step(hedge, img2);
+figure;
+	
+subplot(1,2,1), subimage(edges1);
+hold on
+title('Left Image')
+plot(Mpts1(:,1),Mpts1(:,2),'y*');
+	
+subplot(1,2,2), subimage(edges2);
+hold on
+title('Right Image')
+plot(Mpts2(:,1),Mpts2(:,2),'c*');																								
+								</code>
+							</pre>            		
+						</details>
+						<p>
+							So, we get the following images:
+						</p>
+						<figure>
+							<img class="resp" src="../assets/images/projects/F_matrix/f_matrix_q5_1.png" alt="Image of the set of points with minimum error and matches between left and right image (Question 5)">
+							<img class="resp" src="../assets/images/projects/F_matrix/f_matrix_q5_2.png" alt="F matrix and error of the set of points with minimum error (Question 5)">
+							<img class="resp" src="../assets/images/projects/F_matrix/f_matrix_q5_3.png" alt="Object Edges (Question 5)">
+						</figure>
+						<p>
+							We notice that almost all the edges are detected, with a higher density in the upper part of the house due to the existence of steeper corners.
+						</p>
+					</li>
+					<li>
+						<p><strong>
+							Calculate F and the corresponding error using the same object angles found in Question 5 but with the coordinates of Question 1.
+						</strong></p>
+						<div class="marg_top">
+							<p>
+								We insert into the algorithm our own values from Question 1 that correspond to those we found in Question 5. The error we get is close as expected due to the short distance between the points of Question 1 and those of Question 5.
+							</p>
+						</div>
+						<details>
+							<summary>
+								Code:
+							</summary>
+							<pre>
+								<code class="language-MATLAB">
+%% Question 6
+
+bestp1=zeros(8,3);
+bestp2=zeros(8,3);
+	
+Mep1=[111 205;56 21;177 132;81 138;163 148;145 127;37 89;175 45];
+Mep2=[104 198;42 36;170 132;75 136;147 149;105 126;47 94;181 38];
+	
+sumer=0;
+F=estimateFundamentalMatrix(Mep1,Mep2,'Method', 'Norm8Point');
+F
+Fden=T2'*F*T1;
+	
+for n=1:length(newpts1)        
+	er=sum(((newpts2(:,n))-Fden*(newpts1(:,n))).^2)+...
+		sum(((newpts1(:,n))-Fden'*(newpts2(:,n))).^2);
+	sumer=sumer+er;
+end
+cvexShowMatches(I1,I2,Mep1,Mep2,'Left','Right');
+sumer																									
+								</code>
+							</pre>            		
+						</details>
+						<p>
+							We get the following results:
+						</p>
+						<figure>
+							<img class="resp" src="../assets/images/projects/F_matrix/f_matrix_q6_1.png" alt="Image of the set of points of question 5 using the coordinates of question 1 and matches between left and right image (Question 6)">
+							<img class="resp" src="../assets/images/projects/F_matrix/f_matrix_q6_2.png" alt="F matrix and error of the set of points of question 5 using the coordinates of question 1 (Question 6)">
+						</figure>
+					</li>
+					<li>
+						<p><strong>
+							Use all the coordinate matches from Question 1 to calculate the F matrix and its error. Compare this to the error of the F matrix you calculated in Question 5. What are your conclusions?
+						</strong></p>
+						<div class="marg_top">
+							<p>
+								Similarly to Question 5 but using all the points of Question 1 we find the new F and error(F):
+							</p>
+						</div>
+						<details>
+							<summary>
+								Code:
+							</summary>
+							<pre>
+								<code class="language-MATLAB">
+%% Question 7
+
+allp1=zeros(length(Xp1),3);
+allp2=zeros(length(Xp2),3);
+	
+for n=1:length(Xp1)
+	allp1(n,:)=[Xp1(n) Yp1(n) 1];
+	allp2(n,:)=[Xp2(n) Yp2(n) 1];
+end
+[nnewpts1, T1] = normalise2dpts(allp1');
+[nnewpts2, T2] = normalise2dpts(allp2');
+	
+F=estimateFundamentalMatrix([Xp1 Yp1],[Xp2 Yp2],'Method', 'Norm8Point');
+F
+Fden=T2'*F*T1;
+	
+sumer=0;
+for n=1:length(nnewpts1)        
+	er=sum(((nnewpts2(:,n))-Fden*(nnewpts1(:,n))).^2)+...
+		sum(((nnewpts1(:,n))-Fden'*(nnewpts2(:,n))).^2);
+	sumer=sumer+er;
+end
+sumer																																	
+								</code>
+							</pre>            		
+						</details>
+						<p>
+							So, we get:
+						</p>
+						<figure>
+							<img class="resp" src="../assets/images/projects/F_matrix/f_matrix_q7_1.png" alt="F matrix and error usuing all the points of question 1 (Question 7)">
+						</figure>
+						<p>We notice that the error almost doubles compared to that of Question 5. This is due to the fact that we have more points and the error is calculated cumulatively. Furthermore, in Question 5 we found the best sets of corresponding points using the 8-point algorithm and then the set that minimizes the MSE, significantly improving the result.</p>
 					</li>
             	</ol>
-            	<p id="gazi">
-            		[1] Gazi, Veysel. “Swarm aggregations using artificial potentials and sliding-mode control.” IEEE Transactions on Robotics 21 (2005): 1208-1214.
-            	</p>
             </div>
-            <div class="projects-item-3"></div>            			
+            <div class="projects-item-4"></div>            			
 		</main>
 	  	<footer>
-	      	<nav>
-					<ul class="nav_list">
-					  	<li class="left"><a class="nv" href="./projects.html">Projects</a></li>
-					  	<li class="left"><a class="nv" href="./swarm.html">Swarm</a></li>
-						<li class="left"><a class="nv" href="./f_matrix.html">F Matrix</a></li>
-					  	<li class="right"><a class="nv" href="./about.html">About</a></li>
-				  	</ul>
-		  	</nav>
-		  	<nav id="contact_box">
-		  		<ul id="contact">
-					<li>MORE</li>
-		  			<li class="contact_item"><a target="_blank" id="contact_icon_1" class="nv" href="https://www.linkedin.com/in/foivos-papandreou-a1b99a150/" aria-label="My Linkedin Page"><i class="fab fa-linkedin fa-2x"></i></a></li>
-					<li class="contact_item"><a target="_blank" id="contact_icon_2" class="nv" href="https://github.com/FoivosPap" aria-label="My github page"><i class="fa-brands fa-github fa-2x"></i></a></li>
-		  		</ul>
+			<nav class="top">
+				<a class="nv" href="./projects.html">Projects</a>
+				<a class="nv" href="./swarm.html">Swarm</a>
+				<a class="nv" href="./f_matrix.html">F Matrix</a>
+				<a class="nv" href="./about.html">About</a>
+            </nav>
+			<div id="contact">
+				<p>MORE</p>
+			</div>
+		  	<nav id="nv_con" class="con">
+				<a target="_blank" id="contact_icon_1" class="nv_con" href="https://www.linkedin.com/in/foivos-papandreou-a1b99a150/" aria-label="My Linkedin Page"><i class="fab fa-linkedin fa-2x"></i></a>
+				<a target="_blank" id="contact_icon_2" class="nv_con" href="https://github.com/FoivosPap" aria-label="My github page"><i class="fa-brands fa-github fa-2x"></i></a>
 		  	</nav>
 		  	<div id="signature">
-		  		<small>&copy; 2024 FP Design</small>
+		  		<small>&copy; 2024 FP design</small>
 		  	</div>
 	    </footer>
 		<script src="../js/prism.js"></script>
