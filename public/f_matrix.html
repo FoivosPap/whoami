@@ -4,6 +4,9 @@
 	<meta charset = "utf-8" name="viewport" content="width=device-width, initial-scale=1">
 	<title>F Matrix</title>
 	<link rel="stylesheet" href="../css/mystyle.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Caveat&family=Inconsolata:wght@200..900&family=Manrope:wght@200..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Ysabeau:ital,wght@0,1..1000;1,1..1000&display=swap" rel="stylesheet">
 	<link href="../css/prism.css" rel="stylesheet" />
 	<script src="https://kit.fontawesome.com/10e7774256.js" crossorigin="anonymous"></script>
 </head>
@@ -25,19 +28,19 @@
             <div class="projects-item-3" class="sect">
             	<ol class="swarm_list_2nd">
 					<li>
-						<p><strong>
+						<p><strong class="prob">
 							We are given two images, <a href="../assets/images/projects/F_matrix/left.jpg">left.jpg</a> and <a href="../assets/images/projects/F_matrix/right.jpg">right.jpg</a> containing an object photographed from a different position maintaining all camera settings. The corresponding <a href="../assets/images/projects/F_matrix/left.txt">left.txt</a> and <a href="../assets/images/projects/F_matrix/right.txt">right.txt</a> files contain nine coordinates of some of the object’s corners. Complete the remaining coordinate matches for the angles visible in both images.
 						</strong></p>
 						<div class="marg_top">
-							<p>
+							<p class="prob_sol">
 								We use the function getpts which gives us the coordinates of the points we select with the cursor, i.e. the points of the corners of each image. The results are shown below:
 							</p>
 						</div>
 						<figure>
 							<img class="resp" src="../assets/images/projects/F_matrix/f_matrix_q1_1.png" alt="Points Coordinates (Question 1)">
 						</figure>
-						<p>
-							Additionally, we import the points from the two text files given (left.txt, right.txt), register them in tables and add to them those points, from those we found manually, which are not already contained in the text files. Finally, we display these points on the images. The code implementation is shown below:
+						<p class="prob_sol">
+							Additionally, we import the points from the two text files given (left.txt, right.txt), register them in tables and add to them those points (from the ones we found manually) which are not already contained in the text files. Finally, we display these points on the images. The code implementation is shown below:
 						</p>
 						<details>
 							<summary>
@@ -121,7 +124,7 @@ legend('Corners imported from txts and manually chosen','Location','SouthOutside
 								</code>
 							</pre>            		
 						</details>
-						<p>
+						<p class="prob_sol">
 							So, we get the below images:            				
 						</p>
 						<figure>
@@ -130,11 +133,11 @@ legend('Corners imported from txts and manually chosen','Location','SouthOutside
 						</figure>
 					</li>
 					<li>
-						<p><strong>
+						<p><strong class="prob">
 							Calculate, using a corner-finding algorithm, the coordinates of the edges of the object and compare them with those estimated in Question 1, for both images. Calculate the mean square error.
 						</strong></p>
 						<div class="marg_top">
-							<p>
+							<p class="prob_sol">
 								We use the function vision.CornerDetector in which we define Harris corner detection (Harris & Stephens) as a method and testing different pixel neighborhoods and different sensitivity (so as to find enough points without allowing errors) we manage to get 16 correct points in the left image and 17 in the right without errors. We write the code below:
 							</p>
 						</div>
@@ -165,20 +168,20 @@ title ('Corners detected in right image');
 								</code>
 							</pre>            		
 						</details>
-						<p>
+						<p class="prob_sol">
 							The matches are shown below:
 						</p>
 						<figure>
 							<img class="resp" src="../assets/images/projects/F_matrix/f_matrix_q2_1.png" alt="Detected corners in left image (Question 2)">
 							<img class="resp" src="../assets/images/projects/F_matrix/f_matrix_q2_2.png" alt="Detected corners in right image (Question 2)">
 						</figure>
-						<p>
+						<p class="prob_sol">
 							Then, we find the corresponding points of question 1:<br>
 							Mpts1=[208 81;111 205;198 106;53 19;177 132;159 173;79 139;192 132;163 148; 105 152;145 127;37 89;87 184;174 154;173 45;136 225];<br>
 							Mpts2=[148 176;222 72;170 132;210 105;196 130;40 35;147 149;181 38;104 198; 199 109;74 135;169 157;207 123;104 127;89 181;46 94;91 150];<br>
 							and we calculate the mean squared error:
 						</p>
-						<p class="eq">MSE=(1/n)*&sum;<sub>i=1&rarr;n</sub>(&#562;<sub>i</sub>-Y<sub>i</sub>)<sup>2</sup></p>
+						<p class="eq prob_sol">MSE=(1/n)*&sum;<sub>i=1&rarr;n</sub>(&#562;<sub>i</sub>-Y<sub>i</sub>)<sup>2</sup></p>
 						<details>
 							<summary>
 								Code:
@@ -190,7 +193,7 @@ mse2=sum(sum((Mpts2-double(pts2)).^2,2),1)/length(pts2)
 								</code>
 							</pre>            		
 						</details>
-						<p>
+						<p class="prob_sol">
 							So, we get the results:
 						</p>
 						<figure>
@@ -198,11 +201,11 @@ mse2=sum(sum((Mpts2-double(pts2)).^2,2),1)/length(pts2)
 						</figure>
 					</li>
 					<li>
-						<p><strong>
+						<p><strong class="prob">
 							Apply an algorithm to match x and x' coordinates to the two images for the corners of the object you identified in step 2. What do you notice?
 						</strong></p>
 						<div class="marg_top">
-							<p>
+							<p class="prob_sol">
 								We use the extractFeatures function to get the matches from the two images and with threshold=9 we manage to get 10 matches. We notice that the matches finding algorithm, while having 16 and 17 points from the two images, can only identify significantly fewer matches (10). At the same time, if we introduce other parameters to the algorithm, it returns more matches which are incorrect. The code is shown below:
 							</p>
 						</div>
@@ -224,7 +227,7 @@ cvexShowMatches(I1,I2,matched_points1,matched_points2,'Left','Right');
 								</code>
 							</pre>            		
 						</details>
-						<p>
+						<p class="prob_sol">
 							The correct matches are shown in the below image:
 						</p>
 						<figure>
@@ -232,13 +235,13 @@ cvexShowMatches(I1,I2,matched_points1,matched_points2,'Left','Right');
 						</figure>
 					</li>
 					<li>
-						<p><strong>
+						<p><strong class="prob">
 							Using the 8-point method calculate the F (fundamental matrix) by randomly selecting eight points calculated in step 3. Calculate the error:
 						</strong></p>
-						<p class="eq"><strong>Error(F)=&sum;d(x',Fx)+&sum;d(x,F<sup>T</sup>x')</strong></p>
-						<p><strong>Choose a different octet of point matches and calculate the F matrix and the error d(.,.), i.e. the square of the Euclidean distance.</strong></p>
+						<p class="eq"><strong class="prob">Error(F)=&sum;d(x',Fx)+&sum;d(x,F<sup>T</sup>x')</strong></p>
+						<p><strong class="prob">Choose a different octet of point matches and calculate the F matrix and the error d(.,.), i.e. the square of the Euclidean distance.</strong></p>
 						<div class="marg_top">
-							<p>
+							<p class="prob_sol">
 								We randomly select eight of the points assigned in Question 3. We calculate the F matrix with the estimateFundamentalMatrix function and the normalized 8-point method, and then calculate Error(F) according to the given formula. Because the 8-point algorithm gives large error values due to the large values of the elements it takes as input, we normalize the points we have according to Hartley's normalized 8-point algorithm. We achieve this with the normalise2dps.m function contained in this project folder. We also denormalize F. Finally, we repeat for a new random set of 8 points. So, we write the following code:
 							</p>
 						</div>
@@ -290,7 +293,7 @@ end
 								</code>
 							</pre>            		
 						</details>
-						<p>
+						<p class="prob_sol">
 							We get the following images:
 						</p>
 						<figure>
@@ -301,11 +304,11 @@ end
 						</figure>
 					</li>
 					<li>
-						<p><strong>
+						<p><strong class="prob">
 							Find the set of 8 points that gives you the minimum error. Compare the coordinates of the eight points with those you estimated in Question 1. Show the edges of the object. How are they distributed in the object?
 						</strong></p>
 						<div class="marg_top">
-							<p>
+							<p class="prob_sol">
 								We work similarly by finding the minimum error and, additionally, we find the edges with the EdgeDetector:
 							</p>
 						</div>
@@ -401,7 +404,7 @@ plot(Mpts2(:,1),Mpts2(:,2),'c*');
 								</code>
 							</pre>            		
 						</details>
-						<p>
+						<p class="prob_sol">
 							So, we get the following images:
 						</p>
 						<figure>
@@ -409,16 +412,16 @@ plot(Mpts2(:,1),Mpts2(:,2),'c*');
 							<img class="resp" src="../assets/images/projects/F_matrix/f_matrix_q5_2.png" alt="F matrix and error of the set of points with minimum error (Question 5)">
 							<img class="resp" src="../assets/images/projects/F_matrix/f_matrix_q5_3.png" alt="Object Edges (Question 5)">
 						</figure>
-						<p>
+						<p class="prob_sol">
 							We notice that almost all the edges are detected, with a higher density in the upper part of the house due to the existence of steeper corners.
 						</p>
 					</li>
 					<li>
-						<p><strong>
+						<p><strong class="prob">
 							Calculate F and the corresponding error using the same object angles found in Question 5 but with the coordinates of Question 1.
 						</strong></p>
 						<div class="marg_top">
-							<p>
+							<p class="prob_sol">
 								We insert into the algorithm our own values from Question 1 that correspond to those we found in Question 5. The error we get is close as expected due to the short distance between the points of Question 1 and those of Question 5.
 							</p>
 						</div>
@@ -451,7 +454,7 @@ sumer
 								</code>
 							</pre>            		
 						</details>
-						<p>
+						<p class="prob_sol">
 							We get the following results:
 						</p>
 						<figure>
@@ -460,11 +463,11 @@ sumer
 						</figure>
 					</li>
 					<li>
-						<p><strong>
+						<p><strong class="prob">
 							Use all the coordinate matches from Question 1 to calculate the F matrix and its error. Compare this to the error of the F matrix you calculated in Question 5. What are your conclusions?
 						</strong></p>
 						<div class="marg_top">
-							<p>
+							<p class="prob_sol">
 								Similarly to Question 5 but using all the points of Question 1 we find the new F and error(F):
 							</p>
 						</div>
@@ -500,13 +503,13 @@ sumer
 								</code>
 							</pre>            		
 						</details>
-						<p>
+						<p class="prob_sol">
 							So, we get:
 						</p>
 						<figure>
 							<img class="resp" src="../assets/images/projects/F_matrix/f_matrix_q7_1.png" alt="F matrix and error usuing all the points of question 1 (Question 7)">
 						</figure>
-						<p>We notice that the error almost doubles compared to that of Question 5. This is due to the fact that we have more points and the error is calculated cumulatively. Furthermore, in Question 5 we found the best sets of corresponding points using the 8-point algorithm and then the set that minimizes the MSE, significantly improving the result.</p>
+						<p class="prob_sol">We notice that the error almost doubles compared to that of Question 5. This is due to the fact that we have more points and the error is calculated cumulatively. Furthermore, in Question 5 we found the best sets of corresponding points using the 8-point algorithm and then the set that minimizes the MSE, significantly improving the result.</p>
 					</li>
             	</ol>
             </div>
@@ -522,7 +525,7 @@ sumer
 			<div id="contact">
 				<p>MORE</p>
 			</div>
-		  	<nav id="nv_con" class="con">
+		  	<nav class="con">
 				<a target="_blank" id="contact_icon_1" class="nv_con" href="https://www.linkedin.com/in/foivos-papandreou-a1b99a150/" aria-label="My Linkedin Page"><i class="fab fa-linkedin fa-2x"></i></a>
 				<a target="_blank" id="contact_icon_2" class="nv_con" href="https://github.com/FoivosPap" aria-label="My github page"><i class="fa-brands fa-github fa-2x"></i></a>
 		  	</nav>

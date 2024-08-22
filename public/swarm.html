@@ -4,6 +4,9 @@
 		<meta charset = "utf-8" name="viewport" content="width=device-width, initial-scale=1">
 		<title>Swarm</title>
 		<link rel="stylesheet" href="../css/mystyle.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Caveat&family=Inconsolata:wght@200..900&family=Manrope:wght@200..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Ysabeau:ital,wght@0,1..1000;1,1..1000&display=swap" rel="stylesheet">
 		<link href="../css/prism.css" rel="stylesheet" />
 		<script src="https://kit.fontawesome.com/10e7774256.js" crossorigin="anonymous"></script>
 	</head>
@@ -31,11 +34,11 @@
 				</ol>
 				<ol class="swarm_list_2nd">
 					<li class="li_2nd">
-						<p><strong>
+						<p><strong class="problem">
 							Using the attractive/repulsive function (2.2) from V. Gazi [<a href="#gazi">1</a>]  with a = 1, b = 20, and c = 0.2, show the trajectories in 3D space of the moving vehicles.
 						</strong></p>
-						<div  class="marg_top">
-							<p>
+						<div class="marg_top">
+							<p class="prob_sol">
 								First, we draw the cube of dimensions 100x100x100 and place inside it the 8 robotic vehicles in random positions chosen using the pseudorandom number generator, rand. 
 								So, we have the following code:
 							</p>
@@ -92,29 +95,23 @@ plot3(Xrobots,Yrobots,Zrobots,'gv');
 								</code>
 							</pre>            		
 						</details>
-						<p>
+						<p class="prob_sol">
 							This initial state is shown below:	            				
 						</p>
 						<figure>
 							<img class="resp" src="../assets/images/swarm/cube.png" alt="Cube">
 						</figure>
-						<p>
+						<p class="prob_sol">
 							We then calculate the trajectories of the 8 robotic vehicles by applying the attractive/repulsive function g(y) from V. Gazi [<a href="#gazi">1</a>]:
 						</p>
-						<p id="eq_1" class="eq">g(y)=-y[&#119886;-b*exp(-&#124;&#124;y&#124;&#124;<sup>2</sup>/c)] (1),</p>
-						<p>
-							for a = 1, b = 20, and c = 0.2.
-						</p>
-						<p>
+						<p id="eq_1" class="eq prob_sol">g(y)=-y[&#119886;-b*exp(-&#124;&#124;y&#124;&#124;<sup>2</sup>/c)] (1), for a = 1, b = 20, and c = 0.2.</p>
+						<p class="prob_sol">
 							The function g(y) takes as input for each robotic vehicle the positions of the rest and gives us the derivative of the displacement, i.e. its velocity. This way we can find the position of the next moment in time (t+dt):
 						</p>
-						<p class="eq">
-							x(t+dt)=x(t)v*dt,
+						<p class="eq prob_sol">
+							x(t+dt)=x(t)v*dt, where v is the velocity and dt=0.01.
 						</p>
-						<p>
-							where v is the velocity and dt=0.01.
-						</p>
-						<p>
+						<p class="prob_sol">
 							So, we impement the above:
 						</p>
 						<details>
@@ -155,12 +152,12 @@ hold off
 								</code>
 							</pre>            		
 						</details>
-						<p>Running the above code, we get the trajectories of the robots for a period of 10 sec with step dt=0.01:</p>
+						<p class="prob_sol">Running the above code, we get the trajectories of the robots for a period of 10 sec with step dt=0.01:</p>
 						<figure>
 							<img class="resp" src="../assets/images/swarm/swarm_e1a_1.png" alt="Swarm trajectories of Exercise 1a (Image 1)">
 							<img class="resp" src="../assets/images/swarm/swarm_e1a_2.png" alt="Swarm trajectories of Exercise 1a (Image 2)">
 						</figure>
-						<p>
+						<p class="prob_sol">
 							We observe that the robots move closer to each other and stop once the distance between them is reduced enough.
 						</p>
 					</li>
@@ -169,14 +166,14 @@ hold off
 							Verify through motion simulation the convergence to finite time on the sphere B<sub>ϵ</sub>(x̄) according to Theorem 1 [<a href="#gazi">1</a>].
 						</strong></p>
 						<div  class="marg_top">
-							<p>
+							<p class="prob_sol">
 								According to Gazi's Theorem 1 if we have a swarm of robots which satisfy <a href="#eq_1">Eq. 1</a> will converge within the sphere B<sub>ε</sub>(x̄):
 							</p>
 						</div>		
-							<p class="eq">B<sub>ϵ</sub>(x̄){x:&#124;&#124;x-x̄&#124;&#124;≤ϵ}, where ϵ=(b/&#119886;*sqrt(c/2)*exp(-1/2)) and x̄ is the center of the swarm.</p>
-							<p>In fact, this will happen in a time that will not exceed the time limit:</p>
-							<p class="eq">ṯ=max<sub>i∈S</sub>{(-1/(2*&#119886;))*ln(ϵ<sup>2</sup>/(2*V<sub>i</sub>(0)))},</p>
-							<p>where V<sub>i</sub> is the Lyapunov function that corresponds to robot i for t=0. Thus, we have the following code:</p>
+							<p class="eq prob_sol">B<sub>ϵ</sub>(x̄){x:&#124;&#124;x-x̄&#124;&#124;≤ϵ}, where ϵ=(b/&#119886;*sqrt(c/2)*exp(-1/2)) and x̄ is the center of the swarm.</p>
+							<p class="prob_sol">In fact, this will happen in a time that will not exceed the time limit:</p>
+							<p class="eq prob_sol">ṯ=max<sub>i∈S</sub>{(-1/(2*&#119886;))*ln(ϵ<sup>2</sup>/(2*V<sub>i</sub>(0)))},</p>
+							<p class="prob_sol">where V<sub>i</sub> is the Lyapunov function that corresponds to robot i for t=0. Thus, we have the following code:</p>
 							<details>
 								<summary>
 									Code:
@@ -253,12 +250,12 @@ surface(x,y,z,'FaceColor', 'none','EdgeColor',Spherecolor);
 									</code>
 								</pre>            		
 							</details>
-							<p>Below we can see the trajectories of the robots as well as the sphere B<sub>ϵ</sub>(x̄):</p>
+							<p class="prob_sol">Below we can see the trajectories of the robots as well as the sphere B<sub>ϵ</sub>(x̄):</p>
 							<figure>
 								<img class="resp" src="../assets/images/swarm/swarm_e1b_1.png" alt="Swarm trajectories of Exercise 1b (Image 1)">
 								<img class="resp" src="../assets/images/swarm/swarm_e1b_2.png" alt="Swarm trajectories of Exercise 1b (Image 2)">
 							</figure>
-							<p>We see that all robots headed towards the sphere B<sub>ϵ</sub>(x̄) and arrived inside it in the calculated time (according to Theorem 1) [<a href="#gazi">1</a>].</p>
+							<p class="prob_sol">We see that all robots headed towards the sphere B<sub>ϵ</sub>(x̄) and arrived inside it in the calculated time (according to Theorem 1) [<a href="#gazi">1</a>].</p>
 							<figure>
 								<img class="resp_sm" src="../assets/images/swarm/swarm_e1b_3.png" alt="Swarm trajectories of Exercise 1b (Image 3)">
 							</figure>
@@ -268,7 +265,7 @@ surface(x,y,z,'FaceColor', 'none','EdgeColor',Spherecolor);
 							Verify through simulation that x(t)→Ω<sub>ϵ</sub> according to Theorem 2 of the same Ph.D [<a href="#gazi">1</a>].
 						</strong></p>
 						<div class="marg_top">
-							<p>
+							<p class="prob_sol">
 								According to Gazi's Theorem 2, if we have a swarm of robots which satisfy eq. (1) after infinite time has passed (t→∞) all robots will reach specific positions and stop. So, it is sufficient to let the robots move for a long time and show that they have reached specific positions near the center of the swarm with zero velocities. We implement the above in code:
 							</p>
 						</div>
@@ -313,12 +310,12 @@ zd
 						</code>
 					</pre>            		
 				</details>
-				<p>So, we get the following images:</p>
+				<p class="prob_sol">So, we get the following images:</p>
 				<figure>
 					<img class="resp" src="../assets/images/swarm/swarm_e1c_1.png" alt="Swarm trajectories of Exercise 1c (Image 1)">
 					<img class="resp" src="../assets/images/swarm/swarm_e1c_2.png" alt="Swarm trajectories of Exercise 1c (Image 2)">	
 				</figure>
-				<p>Letting the robots move for 20 sec, we notice that they have ended up in positions near the center of the swarm and remain there as they all have zero velocity (xd, yd, zd express the x, y, z components of the velocity respectively).</p>
+				<p class="prob_sol">Letting the robots move for 20 sec, we notice that they have ended up in positions near the center of the swarm and remain there as they all have zero velocity (xd, yd, zd express the x, y, z components of the velocity respectively).</p>
 				<figure>
 					<img class="resp" src="../assets/images/swarm/swarm_e1c_3.png" alt="Swarm trajectories of Exercise 1c (Image 3)">
 				</figure>
@@ -328,14 +325,14 @@ zd
 					<li>
 						<p><strong>Let the same group of 8 moving robots in the same space. Let be an R8X8 symmetric matrix. The element R<sub>ij</sub>, i>j is a value drawn from a random uniform distribution from 0 to 1. The adjacency matrix G (as published in IEEE Transactions) is derived from the matrix R, where if the element R<sub>ij</sub>≥0.5, then G<sub>ij</sub>=1, otherwise equal to zero. Let the dynamics of each robotic system correspond to that of a second-order system. Implement a controller so that the symmetrically meshed system is stable and plot the trajectories of the 8 nodes, assuming that their initial connectivity remains invariant in time regardless of their spatial distance.</strong></p>
 						<div class="marg_top">
-							<p>
+							<p class="prob_sol">
 								We start by filling the matrix R with values from 0 to 1 using the rand function again and making sure that the array we created is symmetric with the <italic>triu</italic> function. We still fill the matrix G with 1 if the corresponding element of R is ≥ 0.5 and with 0 otherwise. Each row (or column) i of G shows which robot robot i communicates with. We also create the matrix D whose main diagonal point has a value equal to the sum of all elements of the corresponding column of G and all other elements are 0. Finally, we create the Laplacian L= D-G that we will need for our control. The control we will apply is given below: 
 							</p>
 						</div>
-						<p class="eq">ẋ=-L*x (2)</p>
-						<p>Thus, similarly to the first question we get:</p>
-						<p class="eq">x(t+dt)=x(t)+v*dt</p>
-						<p> but with the velocity given by eq. 2. So, we write the following code:</p>
+						<p class="eq prob_sol">ẋ=-L*x (2)</p>
+						<p class="prob_sol">Thus, similarly to the first question we get:</p>
+						<p class="eq prob_sol">x(t+dt)=x(t)+v*dt</p>
+						<p class="prob_sol"> but with the velocity given by eq. 2. So, we write the following code:</p>
 						<details>
 							<summary>
 								Code:
@@ -376,17 +373,17 @@ hold off
 								</code>
 							</pre>            		
 						</details>
-						<p>The results are shown below:</p>	
+						<p class="prob_sol">The results are shown below:</p>	
 						<figure>
 							<img class="resp" src="../assets/images/swarm/swarm_b_1.png" alt="Swarm trajectories of Exercise B (Image 1)">
 							<img class="resp" src="../assets/images/swarm/swarm_b_2.png" alt="Swarm trajectories of Exercise B (Image 2)">
 						</figure>	
-						<p>
+						<p class="prob_sol">
 							We observe that all the robots reach a common point and stop. So, the system is Lyapunov stable in the sense that all robots always end up in the desired state regardless of the initial conditions (initial robot positions).
 						</p>					
 					</li>
             	</ol>
-            	<p id="gazi">
+            	<p id="gazi" class="prob_sol">
             		[1] Gazi, Veysel. “Swarm aggregations using artificial potentials and sliding-mode control.” IEEE Transactions on Robotics 21 (2005): 1208-1214.
             	</p>
             </div>
@@ -402,7 +399,7 @@ hold off
 			<div id="contact">
 				<p>MORE</p>
 			</div>
-		  	<nav id="nv_con" class="con">
+		  	<nav class="con">
 				<a target="_blank" id="contact_icon_1" class="nv_con" href="https://www.linkedin.com/in/foivos-papandreou-a1b99a150/" aria-label="My Linkedin Page"><i class="fab fa-linkedin fa-2x"></i></a>
 				<a target="_blank" id="contact_icon_2" class="nv_con" href="https://github.com/FoivosPap" aria-label="My github page"><i class="fa-brands fa-github fa-2x"></i></a>
 		  	</nav>
