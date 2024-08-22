@@ -122,7 +122,12 @@ h3{
 }
 
 h4{
-	font-family: "Century Gothic", Arial, Times, serif;
+	font-family: "Manrope", "Century Gothic", sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 300;
+	font-style: normal;
+	line-height: 1.1;
+	font-size: 1.1rem;	
 	text-align: center;
 	text-transform: uppercase;
 	color: #202c8e;
