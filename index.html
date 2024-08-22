@@ -4,6 +4,9 @@
 	  	<meta charset = "utf-8" name="viewport" content="width=device-width, initial-scale=1">
 	  	<title>My CV</title>
 		<link rel="stylesheet" href="./css/mystyle.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Caveat&family=Inconsolata:wght@200..900&family=Manrope:wght@200..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Ysabeau:ital,wght@0,1..1000;1,1..1000&display=swap" rel="stylesheet">
 		<script src="https://kit.fontawesome.com/10e7774256.js" crossorigin="anonymous"></script>	
 	</head>
 	<body id="top">
@@ -74,6 +77,7 @@
 						<hr>
 						<dt>Jan 2017 - Sep 2017</dt>
 						<dd><strong>Obligatory Military Service</strong><div class="location"><img src="./assets/images/home/location.svg" width="15px">Lesvos, Greece</div></dd>
+						<hr>
 					</dl>
 				</section>
 			</div>
@@ -107,7 +111,7 @@
 				<h3>Skills</h3>
 				<section class="sect" id="skills">
 					<div id="lang">
-						<table>
+						<table class="skills_table">
 							<title>LANGUAGES</title>
 							<colgroup>
 								<col class="div13">
@@ -134,6 +138,11 @@
 									<td>German</td>
 									<td>Intermediate</td>
 									<td class="cont_hide">Goethe-Zertifikat (B2)</td>
+								</tr>
+								<tr class="bord_bot">
+									<td>French</td>
+									<td>Beginner</td>
+									<td class="cont_hide">-</td>
 								</tr>
 								<tr class="bord_bot">
 									<td>Spanish</td>
@@ -228,9 +237,19 @@
                             </tr>
                             <tr>
                                 <td>
+                                    <a class="tbl_lnk" href="./assets/certificates/ATA 32 Level III theoretical & ATA 27 Level III theoretical_Foivos Papandreou.pdf" target="_blank">
+                                        Landing Gear (ATA 32) & Flight Controls (ATA 27), Level III theoretical
+                                    </a>
+                                </td>
+                                <td class="cont_hide">Aerospace</td>
+                                <td>Liebherr</td>
+                                <td class="cont_hide">Completed</td>
+                            </tr>
+                            <tr>
+                                <td>
                                     <a class="tbl_lnk" href="https://coursera.org/share/1539637224bba3e37d9c49852aac8b01" target="_blank">Getting started with TensorFlow 2</a>
                                 </td>
-                                <td class="cont_hide">TensorFlow 2 for Deep Learning</td>
+                                <td class="cont_hide">Deep Learning</td>
                                 <td>Imperial College London</td>
                                 <td class="cont_hide">Completed</td>
                             </tr>
@@ -238,7 +257,7 @@
                                 <td>
                                     <a class="tbl_lnk" href="https://coursera.org/share/da0eacf52c37759cfc13981a9ee6f4dc" target="_blank">Introduction to HTML5</a>
                                 </td>
-                                <td class="cont_hide">Web Design for Everybody: Basics of Web Development & Coding</td>
+                                <td class="cont_hide">Web Design</td>
                                 <td>University of Michigan</td>
                                 <td class="cont_hide">Completed</td>
                             </tr>
@@ -285,7 +304,7 @@
 			<div id="contact">
 				<p>MORE</p>
 			</div>
-		  	<nav id="nv_con" class="con">
+		  	<nav class="con">
 				<a target="_blank" id="contact_icon_1" class="nv_con" href="https://www.linkedin.com/in/foivos-papandreou-a1b99a150/" aria-label="My Linkedin Page"><i class="fab fa-linkedin fa-2x"></i></a>
 				<a target="_blank" id="contact_icon_2" class="nv_con" href="https://github.com/FoivosPap" aria-label="My github page"><i class="fa-brands fa-github fa-2x"></i></a>
 		  	</nav>
